@@ -39,8 +39,7 @@ public class SalonFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        salonItemList.add(new SalonItem(R.drawable.herry_poer, "HERRY POER" , "Prince Saud al faiasl, AL Rawdah, Riyadh. 23424, Saudi Arabia" ,
-                "15.5 km", "4.5"));
+        salonItemList.add(new SalonItem(R.drawable.herry_poer, "HERRY POER" , "Prince Saud al faiasl, AL Rawdah, Riyadh. 23424, Saudi Arabia" , "4.5"));
 
         adapter = new SalonAdapter(getContext(), salonItemList);
         recyclerView.setAdapter(adapter);

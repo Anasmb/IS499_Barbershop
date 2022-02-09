@@ -42,7 +42,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         holder.salonImage.setImageDrawable(mContext.getResources().getDrawable(salonItem.getSalonImage()));
         holder.salonName.setText(salonItem.getSalonName());
         holder.address.setText(salonItem.getAddress());
-        holder.distance.setText(salonItem.getDistance());
         holder.rating.setText(salonItem.getRating());
     }
 
@@ -58,7 +57,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         ImageView salonImage;
         TextView salonName;
         TextView address;
-        TextView distance;
         TextView rating;
 
         public SalonViewHolder(@NonNull @NotNull View itemView) {
@@ -67,7 +65,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
             salonImage = itemView.findViewById(R.id.salonLogoImageView);
             salonName = itemView.findViewById(R.id.salonNameTextView);
             address = itemView.findViewById(R.id.addressTextView);
-            distance = itemView.findViewById(R.id.distanceTextView);
             rating = itemView.findViewById(R.id.ratingTextView);
         }
     }
