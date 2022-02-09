@@ -1,5 +1,6 @@
 package com.example.barbershop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class MoreFragment extends Fragment {
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
 
         changePasswordLayout = view.findViewById(R.id.changePasswordLayout);
-        changePasswordLayout.setOnClickListener(changeLanguageLayoutListener);
+        changePasswordLayout.setOnClickListener(changePasswordLayoutListener);
 
         changeLanguageLayout = view.findViewById(R.id.changeLanguageLayout);
         changeLanguageLayout.setOnClickListener(changeLanguageLayoutListener);
@@ -46,14 +47,16 @@ public class MoreFragment extends Fragment {
     private View.OnClickListener myAccountLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(getActivity(), MyAccountActivity.class);
+            startActivity(intent);
         }
     };
 
     private View.OnClickListener changePasswordLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
+            startActivity(intent);
         }
     };
 
@@ -74,7 +77,8 @@ public class MoreFragment extends Fragment {
     private View.OnClickListener signInLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            Intent intent = new Intent(getActivity(), SigninActivity.class);
+            startActivity(intent);
         }
     };
     
