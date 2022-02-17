@@ -48,8 +48,8 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginVertical="10dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="10dp"
             android:hint="Name"
             android:textColorHint="#9C9C9C">
 
@@ -59,33 +59,55 @@
                 android:layout_height="match_parent"
                 android:inputType="textPersonName"
                 android:singleLine="true"
+                android:drawableRight="@drawable/ic_baseline_person_24"
                 android:maxLength="32"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/nameWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Name should not be empty"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="invisible"/>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginVertical="10dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="10dp"
             android:hint="Mobile Number"
             android:textColorHint="#9C9C9C">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/createAccountNumberEditText"
+                android:id="@+id/createAccountPhoneNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="phone"
                 android:singleLine="true"
-                android:maxLength="32"/>
+                android:drawableRight="@drawable/ic_baseline_phone_iphone_24"
+                android:maxLength="10" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/mobileNumberWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Enter valid mobile number"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="invisible"/>
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginVertical="10dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="10dp"
             android:hint="Email"
             android:textColorHint="#9C9C9C">
 
@@ -95,15 +117,26 @@
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
+                android:drawableRight="@drawable/ic_baseline_email_24"
                 android:maxLength="32"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/emailWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Enter valid email"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="invisible"/>
+
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginVertical="10dp"
+            android:layout_height="58dp"
+            android:layout_marginTop="10dp"
             android:hint="Password"
             android:textColorHint="#9C9C9C">
 
@@ -113,12 +146,24 @@
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:maxLength="32"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:id="@+id/passwordWarning"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="Should be at least 8 characteres"
+            android:textSize="10dp"
+            android:textColor="#A50000"
+            android:visibility="invisible"/>
+
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/createAccountSignupBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"

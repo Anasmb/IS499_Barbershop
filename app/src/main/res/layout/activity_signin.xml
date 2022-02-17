@@ -47,7 +47,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="58dp"
             android:layout_marginVertical="10dp"
             android:hint="Email"
             android:textColorHint="#9C9C9C">
@@ -57,6 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
+                android:drawableRight="@drawable/ic_baseline_email_24"
                 android:singleLine="true"
                 android:maxLength="32"/>
 
@@ -65,7 +66,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="54dp"
+            android:layout_height="58dp"
             android:layout_marginVertical="10dp"
             android:hint="Password"
             android:textColorHint="#9C9C9C">
@@ -76,12 +77,14 @@
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:singleLine="true"
+                android:drawableRight="@drawable/ic_baseline_lock_24"
                 android:maxLength="32"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.button.MaterialButton
+            android:id="@+id/signinButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="64dp"
