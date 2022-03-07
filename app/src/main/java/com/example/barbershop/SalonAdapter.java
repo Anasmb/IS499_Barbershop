@@ -18,10 +18,12 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
 
     private Context mContext;
     private List<SalonItem> salonItemList;
+    private OnNoteListener mOnNoteListener;
 
-    public SalonAdapter(Context mContext, List<SalonItem> salonItemList) {
+    public SalonAdapter(Context mContext, List<SalonItem> salonItemList, OnNoteListener onNoteListener) {
         this.mContext = mContext;
         this.salonItemList = salonItemList;
+        this.mOnNoteListener = onNoteListener;
     }
 
     @NonNull
@@ -31,7 +33,7 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
 
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.salon_item, null);
-        SalonViewHolder holder = new SalonViewHolder(view);
+        SalonViewHolder holder = new SalonViewHolder(view,mOnNoteListener);
         return holder;
     }
 
@@ -51,18 +53,30 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
 
 
 
-    class SalonViewHolder extends RecyclerView.ViewHolder {
+    class SalonViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         ImageView salonImage;
         TextView salonName;
         TextView address;
-        public SalonViewHolder(@NonNull @NotNull View itemView) {
+        OnNoteListener onNoteListener;
+
+        public SalonViewHolder(@NonNull @NotNull View itemView,OnNoteListener onNoteListener) {
             super(itemView);
 
             salonImage = itemView.findViewById(R.id.salonLogoImageView);
             salonName = itemView.findViewById(R.id.salonNameTextView);
             address = itemView.findViewById(R.id.addressTextView);
-
+            this.onNoteListener = onNoteListener;
+            itemView.setOnClickListener(this::onClick);
         }
+
+        @Override
+        public void onClick(View view) {
+            onNoteListener.onNoteClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnNoteListener{
+        void onNoteClick(int position);
     }
 }

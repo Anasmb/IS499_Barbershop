@@ -1,5 +1,6 @@
 package com.example.barbershop;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,9 +28,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SalonFragment extends Fragment {
+public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getSalonsInfo.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getShops.php";
     private RecyclerView recyclerView;
     private SalonAdapter adapter;
     private List<SalonItem> salonItemList;
@@ -51,12 +52,7 @@ public class SalonFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        salonItemList.add(new SalonItem(R.drawable.herry_poer, "HERRY POER" , "Prince Saud al faiasl, AL Rawdah, Riyadh. 23424, Saudi Arabia"));
-
-        adapter = new SalonAdapter(getContext(), salonItemList);
-        recyclerView.setAdapter(adapter);
-
-      //  loadSalons();
+        loadSalons();
     }
 
     private void loadSalons(){
@@ -67,14 +63,15 @@ public class SalonFragment extends Fragment {
                     JSONArray services = new JSONArray(response);
                     for (int i = 0 ; i < services.length() ; i++){
                         JSONObject serviceObject = services.getJSONObject(i);
-                        String salonName = serviceObject.getString("salonName");
-                        String address = serviceObject.getString("address");
-                        String rating = serviceObject.getString("rating");
-                        SalonItem salonItem = new SalonItem(R.drawable.herry_poer,salonName,address); //TODO CHANGE THE IMAGE FUNCTIONALITY
+                        String salonName = serviceObject.getString("ShopName");
+                        String address = serviceObject.getString("Address");
+                        int id = serviceObject.getInt("BarbershopID");
+                        SalonItem salonItem = new SalonItem(R.drawable.herry_poer,salonName,address,id); //TODO CHANGE THE IMAGE FUNCTIONALITY
                         salonItemList.add(salonItem);
+                        Log.d("php", "salon name" + salonName);
                     }
 
-                    adapter = new SalonAdapter(getActivity(), salonItemList);
+                    adapter = new SalonAdapter(getActivity(), salonItemList, SalonFragment.this::onNoteClick);
                     recyclerView.setAdapter(adapter);
 
                 } catch (JSONException e) {
@@ -92,4 +89,12 @@ public class SalonFragment extends Fragment {
     }
 
 
+    @Override
+    public void onNoteClick(int position) {
+        salonItemList.get(position);
+        Intent intent = new Intent(getActivity() , ShopPageActivity.class);
+       // intent.putExtra("barbershopID",salonItemList.get(position));
+        startActivity(intent);
+
+    }
 }
