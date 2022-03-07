@@ -18,7 +18,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class SigninActivity extends AppCompatActivity {
 
-    private TextInputEditText email, password;
+    private TextInputEditText phonenumber, password;
     private MaterialButton signinButton;
     private ImageView backBtn;
     private TextView signupTxt;
@@ -28,7 +28,7 @@ public class SigninActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
 
-        email = findViewById(R.id.signinEmailEditText);
+        phonenumber = findViewById(R.id.signinPhoneNumberEditText);
         password = findViewById(R.id.signinPasswordEditText);
 
         signinButton = findViewById(R.id.signinButton);
@@ -44,7 +44,7 @@ public class SigninActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
 
-            if(email.getText().length() > 0 && password.getText().length() > 0) {
+            if(phonenumber.getText().length() > 0 && password.getText().length() > 0) {
                 //Start ProgressBar first (Set visibility VISIBLE)
                 signinButton.setClickable(false);
                 Handler handler = new Handler(Looper.getMainLooper());
@@ -54,11 +54,11 @@ public class SigninActivity extends AppCompatActivity {
                         //Starting Write and Read data with URL
                         //Creating array for parameters
                         String[] field = new String[2];
-                        field[0] = "email";
+                        field[0] = "phonenumber";
                         field[1] = "password";
                         //Creating array for data
                         String[] data = new String[2];
-                        data[0] = String.valueOf(email.getText());
+                        data[0] = String.valueOf(phonenumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
                         PutData putData = new PutData("http://192.168.100.6/barbershop-php/login.php", "POST", field, data);

@@ -42,7 +42,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         holder.salonImage.setImageDrawable(mContext.getResources().getDrawable(salonItem.getSalonImage()));
         holder.salonName.setText(salonItem.getSalonName());
         holder.address.setText(salonItem.getAddress());
-        holder.rating.setText(salonItem.getRating());
     }
 
     @Override
@@ -57,15 +56,13 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         ImageView salonImage;
         TextView salonName;
         TextView address;
-        TextView rating;
-
         public SalonViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
 
             salonImage = itemView.findViewById(R.id.salonLogoImageView);
             salonName = itemView.findViewById(R.id.salonNameTextView);
             address = itemView.findViewById(R.id.addressTextView);
-            rating = itemView.findViewById(R.id.ratingTextView);
+
         }
     }
 }

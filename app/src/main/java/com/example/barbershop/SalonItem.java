@@ -5,13 +5,11 @@ public class SalonItem {
     private int salonImage;
     private String salonName;
     private String address;
-    private String rating;
 
-    public SalonItem(int salonImage, String salonName, String address, String rating) {
+    public SalonItem(int salonImage, String salonName, String address) {
         this.salonImage = salonImage;
         this.salonName = salonName;
         this.address = address;
-        this.rating = rating;
     }
 
     public int getSalonImage() {
@@ -26,7 +24,4 @@ public class SalonItem {
         return address;
     }
 
-    public String getRating() {
-        return rating;
-    }
 }

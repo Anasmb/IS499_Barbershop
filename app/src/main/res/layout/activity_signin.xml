@@ -18,14 +18,12 @@
             android:id="@+id/signin_back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_arrow_back_32"
-            android:tag="previous"/>
+            android:src="@drawable/ic_baseline_arrow_back_32"/>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:layout_centerHorizontal="true"
             android:text="Sign In"
             android:textSize="24sp"
@@ -49,17 +47,17 @@
             android:layout_width="match_parent"
             android:layout_height="58dp"
             android:layout_marginVertical="10dp"
-            android:hint="Email"
+            android:hint="Phone Number"
             android:textColorHint="#9C9C9C">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/signinEmailEditText"
+                android:id="@+id/signinPhoneNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textEmailAddress"
-                android:drawableRight="@drawable/ic_baseline_email_24"
+                android:drawableRight="@drawable/ic_baseline_phone_iphone_24"
                 android:singleLine="true"
-                android:maxLength="32"/>
+                android:maxLength="10"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
