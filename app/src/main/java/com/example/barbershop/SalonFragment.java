@@ -90,11 +90,11 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
 
 
     @Override
-    public void onNoteClick(int position) {
+    public void onNoteClick(View v, int position) {
         salonItemList.get(position);
         Intent intent = new Intent(getActivity() , ShopPageActivity.class);
-       // intent.putExtra("barbershopID",salonItemList.get(position));
+        intent.putExtra("barbershopID",salonItemList.get(position).getId());
+        intent.putExtra("shopName",salonItemList.get(position).getSalonName());
         startActivity(intent);
-
     }
 }

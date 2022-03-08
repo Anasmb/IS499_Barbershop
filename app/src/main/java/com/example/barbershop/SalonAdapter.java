@@ -72,11 +72,11 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
 
         @Override
         public void onClick(View view) {
-            onNoteListener.onNoteClick(getAdapterPosition());
+            onNoteListener.onNoteClick(view,getAdapterPosition());
         }
     }
 
     public interface OnNoteListener{
-        void onNoteClick(int position);
+        void onNoteClick(View v, int position);
     }
 }
