@@ -2,6 +2,7 @@ package com.example.barbershop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.button.MaterialButton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +27,7 @@ public class ShopPageActivity extends AppCompatActivity {
     private TextView shopName;
     private int shopID;
     private ImageView backBtn;
+    private MaterialButton bookBtn;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
 
     @Override
@@ -34,6 +37,8 @@ public class ShopPageActivity extends AppCompatActivity {
 
         backBtn = findViewById(R.id.shopPage_backButton);
         backBtn.setOnClickListener(backBtnListener);
+        bookBtn = findViewById(R.id.bookButton);
+        bookBtn.setOnClickListener(bookBtnListener);
         shopName = findViewById(R.id.shopPage_salonNameText);
 
         shopID = getIntent().getExtras().getInt("barbershopID");
@@ -56,6 +61,15 @@ public class ShopPageActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             finish();
+        }
+    };
+
+    private View.OnClickListener bookBtnListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext() , SelectBarberActivity.class);
+            intent.putExtra("barbershopID",shopID);
+            startActivity(intent);
         }
     };
 

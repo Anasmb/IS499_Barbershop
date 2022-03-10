@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Barbershop"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ShopPageActivity"/>
+        <activity android:name=".SelectDateActivity"></activity>
+        <activity android:name=".SelectBarberActivity" />
+        <activity android:name=".SelectServiceActivity" />
+        <activity android:name=".ShopPageActivity" />
         <activity android:name=".MyAccountActivity" />
         <activity android:name=".CreateAccountActivity" />
         <activity android:name=".ChangePasswordActivity" />

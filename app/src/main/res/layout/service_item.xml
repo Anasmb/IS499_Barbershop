@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="16dp">
+
+    <CheckBox
+        android:id="@+id/serviceCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="77 Min"
+        android:textSize="20dp"
+        android:fontFamily="@font/roboto_bold"/>
+
+
+    <TextView
+        android:id="@+id/servicePriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="77 SR"
+        android:fontFamily="@font/roboto_bold"
+        android:textSize="20dp"
+        android:textColor="#9C9C9C"
+        android:layout_alignParentRight="true"/>
+
+
+</RelativeLayout>
