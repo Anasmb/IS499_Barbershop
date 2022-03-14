@@ -2,7 +2,9 @@ package com.example.barbershop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,11 +31,13 @@ public class ShopPageActivity extends AppCompatActivity {
     private ImageView backBtn;
     private MaterialButton bookBtn;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
+    SharedPreferences preferences;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { //TODO FINISH CALL AND ADDRESS FUNCTIONALITY
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_page);
+        preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         backBtn = findViewById(R.id.shopPage_backButton);
         backBtn.setOnClickListener(backBtnListener);
@@ -67,9 +71,16 @@ public class ShopPageActivity extends AppCompatActivity {
     private View.OnClickListener bookBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getApplicationContext() , SelectBarberActivity.class);
-            intent.putExtra("barbershopID",shopID);
-            startActivity(intent);
+            if(!preferences.getString("customerID","").isEmpty()){
+                Intent intent = new Intent(getApplicationContext() , SelectBarberActivity.class);
+                intent.putExtra("barbershopID",shopID);
+                intent.putExtra("shopName",shopName.getText());
+                startActivity(intent);
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"Please login first" , Toast.LENGTH_LONG).show();
+            }
+
         }
     };
 

@@ -35,6 +35,7 @@ public class SelectBarberActivity extends AppCompatActivity implements BarberAda
     private BarberAdapter adapter;
     private List<BarberItem> barberItemList;
     private int shopID;
+    private String shopName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +43,7 @@ public class SelectBarberActivity extends AppCompatActivity implements BarberAda
         setContentView(R.layout.activity_select_barber);
 
         shopID = getIntent().getExtras().getInt("barbershopID");
+        shopName = getIntent().getExtras().getString("shopName");
         SQL_URL += "?BarbershopID=" + shopID;
 
         barberItemList = new ArrayList<>();
@@ -102,6 +104,7 @@ public class SelectBarberActivity extends AppCompatActivity implements BarberAda
         Intent intent = new Intent(getApplicationContext(),SelectServiceActivity.class);
         intent.putExtra("barberName",barberItemList.get(position).getBarberName());
         intent.putExtra("barbershopID",shopID);
+        intent.putExtra("shopName",shopName);
         startActivity(intent);
     }
 }

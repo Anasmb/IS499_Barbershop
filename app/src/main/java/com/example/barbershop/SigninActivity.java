@@ -2,7 +2,9 @@ package com.example.barbershop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,16 +14,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class SigninActivity extends AppCompatActivity {
 
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getCustomerInfo.php";
     private TextInputEditText phonenumber, password;
     private MaterialButton signinButton;
     private ImageView backBtn;
     private TextView signupTxt;
+    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +43,7 @@ public class SigninActivity extends AppCompatActivity {
 
         phonenumber = findViewById(R.id.signinPhoneNumberEditText);
         password = findViewById(R.id.signinPasswordEditText);
+        preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
         signinButton = findViewById(R.id.signinButton);
         signinButton.setOnClickListener(signinListener);
@@ -68,7 +82,8 @@ public class SigninActivity extends AppCompatActivity {
                                 if(result.equals("Login Success")){
                                     Log.d("php", result);
                                     Toast.makeText(getApplicationContext(),"Login Success",Toast.LENGTH_LONG).show();
-                                    finish();
+                                    SQL_URL += "?phoneNumber=" + String.valueOf(phonenumber.getText());
+                                    saveCustomerInfo();
                                 }
                                 else {
                                     Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
@@ -85,6 +100,41 @@ public class SigninActivity extends AppCompatActivity {
 
         }
     };
+
+    private void saveCustomerInfo(){
+
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    JSONArray customer = new JSONArray(response);
+                    for (int i = 0 ; i < customer.length() ; i++){
+                        JSONObject customerObject = customer.getJSONObject(i);
+                        editor.putString("customerID" , customerObject.getString("customer_id"));
+                        editor.putString("name" , customerObject.getString("name"));
+                        editor.putString("email" , customerObject.getString("email"));
+                        editor.putString("password" , customerObject.getString("password"));
+                        editor.putString("phoneNumber" , String.valueOf(phonenumber.getText()));
+                        editor.apply();
+                    }
+                    Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                    startActivity(intent);
+                    finish();
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) { // this method will execute if there is error
+                Toast.makeText(getApplicationContext(),error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
+
+    }
 
     private View.OnClickListener backBtnListener = new View.OnClickListener() {
         @Override

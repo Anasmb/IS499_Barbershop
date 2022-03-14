@@ -1,11 +1,14 @@
 package com.example.barbershop;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -34,6 +37,8 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
     private RecyclerView recyclerView;
     private SalonAdapter adapter;
     private List<SalonItem> salonItemList;
+    SharedPreferences preferences;
+    private TextView welcomeText;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -46,6 +51,14 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
     @Override
     public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        preferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+
+
+        welcomeText = view.findViewById(R.id.welcomeGuestText);
+
+        if (!preferences.getString("name","").isEmpty()){
+            welcomeText.setText("Welcome " + preferences.getString("name",""));
+        }
 
         salonItemList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.salons_recyclerView);

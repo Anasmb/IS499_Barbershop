@@ -37,6 +37,7 @@ public class SelectServiceActivity extends AppCompatActivity {
     private List<ServiceItem> serviceItemList;
     private int shopID;
     private String barberName;
+    private String shopName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +46,7 @@ public class SelectServiceActivity extends AppCompatActivity {
 
         barberName = getIntent().getExtras().getString("barberName");
         shopID = getIntent().getExtras().getInt("barbershopID");
+        shopName = getIntent().getExtras().getString("shopName");
         SQL_URL += "?BarbershopID=" + shopID;
 
         serviceItemList = new ArrayList<>();
@@ -76,6 +78,7 @@ public class SelectServiceActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), SelectDateActivity.class);
                 intent.putExtra("barbershopID", shopID);
                 intent.putExtra("barberName", barberName);
+                intent.putExtra("shopName",shopName);
                 intent.putParcelableArrayListExtra("services", adapter.listOfSelectedServices());
                 startActivity(intent);
             }

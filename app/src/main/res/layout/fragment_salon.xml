@@ -24,6 +24,7 @@
             android:fontFamily="@font/roboto_regular"/>
 
         <TextView
+            android:id="@+id/welcomeGuestText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingVertical="6dp"

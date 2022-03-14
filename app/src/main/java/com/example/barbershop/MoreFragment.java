@@ -1,11 +1,14 @@
 package com.example.barbershop;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -13,11 +16,9 @@ import androidx.fragment.app.Fragment;
 
 public class MoreFragment extends Fragment {
 
-    private LinearLayout myAccountLayout;
-    private LinearLayout changePasswordLayout;
-    private LinearLayout changeLanguageLayout;
-    private LinearLayout customerSupportLayout;
-    private LinearLayout signInLayout;
+    private LinearLayout myAccountLayout,changeLanguageLayout,customerSupportLayout,signInLayout;
+    private TextView customerName,signInText;
+    SharedPreferences preferences;
 
 
     @Nullable
@@ -26,11 +27,10 @@ public class MoreFragment extends Fragment {
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_more, container, false);
 
+        preferences = getActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+
         myAccountLayout = view.findViewById(R.id.myAccountLayout);
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
-
-        changePasswordLayout = view.findViewById(R.id.changePasswordLayout);
-        changePasswordLayout.setOnClickListener(changePasswordLayoutListener);
 
         changeLanguageLayout = view.findViewById(R.id.changeLanguageLayout);
         changeLanguageLayout.setOnClickListener(changeLanguageLayoutListener);
@@ -41,24 +41,33 @@ public class MoreFragment extends Fragment {
         signInLayout = view.findViewById(R.id.signInLayout);
         signInLayout.setOnClickListener(signInLayoutListener);
 
+        customerName = view.findViewById(R.id.moreCustomerName);
+        signInText = view.findViewById(R.id.signInTxt);
+
+        if(!preferences.getString("name", "").isEmpty()){
+            customerName.setText("Welcome " + preferences.getString("name",""));
+            signInText.setText("Logout");
+        }
+
+
         return view;
     }
 
     private View.OnClickListener myAccountLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), MyAccountActivity.class);
-            startActivity(intent);
+            if(preferences.getString("customerID", "").isEmpty()){
+                Intent intent = new Intent(getActivity(), SigninActivity.class);
+                startActivity(intent);
+            }
+            else {
+                Intent intent = new Intent(getActivity(), MyAccountActivity.class);
+                startActivity(intent);
+            }
+
         }
     };
 
-    private View.OnClickListener changePasswordLayoutListener = new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), ChangePasswordActivity.class);
-            startActivity(intent);
-        }
-    };
 
     private View.OnClickListener changeLanguageLayoutListener = new View.OnClickListener() {
         @Override
@@ -77,8 +86,17 @@ public class MoreFragment extends Fragment {
     private View.OnClickListener signInLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(getActivity(), SigninActivity.class);
-            startActivity(intent);
+            if (preferences.getString("customerID", "").isEmpty()){
+                Intent intent = new Intent(getActivity(), SigninActivity.class);
+                startActivity(intent);
+            }
+            else { // delete customer info from application
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.clear();
+                editor.apply();
+                getActivity().finish();
+            }
+
         }
     };
     
