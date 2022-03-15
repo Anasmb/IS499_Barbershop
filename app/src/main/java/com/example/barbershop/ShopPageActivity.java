@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +30,10 @@ public class ShopPageActivity extends AppCompatActivity {
     private String SQL_URL = "http://192.168.100.6/barbershop-php/hoursAPI.php";
     private TextView shopName;
     private int shopID;
+    private String address, phoneNumber;
     private ImageView backBtn;
     private MaterialButton bookBtn;
+    private LinearLayout callLayout, mapLayout;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
     SharedPreferences preferences;
 
@@ -44,9 +48,15 @@ public class ShopPageActivity extends AppCompatActivity {
         bookBtn = findViewById(R.id.bookButton);
         bookBtn.setOnClickListener(bookBtnListener);
         shopName = findViewById(R.id.shopPage_salonNameText);
+        callLayout = findViewById(R.id.callBarbershopLayout);
+        callLayout.setOnClickListener(callLayoutListener);
+        mapLayout = findViewById(R.id.barbershopLocationLayout);
+        mapLayout.setOnClickListener(mapLayoutListener);
 
         shopID = getIntent().getExtras().getInt("barbershopID");
         shopName.setText(getIntent().getExtras().getString("shopName"));
+        address = getIntent().getExtras().getString("address");
+        phoneNumber = getIntent().getExtras().getString("phoneNumber");
         SQL_URL += "?BarbershopID=" + shopID;
 
         sundayTime = findViewById(R.id.sundayTimeText);
@@ -81,6 +91,26 @@ public class ShopPageActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),"Please login first" , Toast.LENGTH_LONG).show();
             }
 
+        }
+    };
+
+    private View.OnClickListener callLayoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + phoneNumber));
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener mapLayoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            String coordinates[] = address.split("/"); // get the latitude and longitude
+            String uri = "http://maps.google.com/maps?q=loc:" + coordinates[1] + "," + coordinates[2];
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
         }
     };
 

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShopPageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/background_light_blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -46,29 +47,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Opening Hours"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_bold"/>
 
         <LinearLayout
+            android:id="@+id/callBarbershopLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_alignParentRight="true">
 
             <ImageView
-                android:id="@+id/callBarbershop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_call_24"
+                android:id="@+id/callBarbershopImage"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:src="@drawable/telephone"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Call"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:textColor="@color/black"
+                android:textSize="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"/>
 
         </LinearLayout>
 
@@ -91,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Sunday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -100,7 +104,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Monday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -109,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Tuesday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -118,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Wednesday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -127,7 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Thursday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -136,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Friday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -145,7 +149,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Saturday"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -163,7 +167,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="6:00 AM - 6:00 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -173,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="11:00 AM - 11:30 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -183,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="11:00 AM - 11:30 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -193,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="11:00 AM - 11:30 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -203,7 +207,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="11:00 AM - 11:30 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -213,7 +217,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="Closed - Closed"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -223,7 +227,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="6dp"
                 android:text="11:00 AM - 11:30 PM"
-                android:textSize="14dp"
+                android:textSize="18dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"/>
 
@@ -243,14 +247,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:paddingHorizontal="16dp"
-        android:paddingVertical="8dp">
+        android:paddingVertical="12dp">
 
         <TextView
             android:id="@+id/addressTXT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Address"
-            android:textSize="16dp"
+            android:textSize="20dp"
             android:textColor="@color/black"
             android:fontFamily="@font/roboto_bold"/>
 
@@ -260,12 +264,13 @@
             android:layout_below="@id/addressTXT"
             android:layout_marginVertical="8dp"
             android:text="8528 Uthman Ibn Affan Rd, Al Wahah, Riyadh, Saudi Arabia"
-            android:textSize="12dp"
+            android:textSize="14dp"
             android:fontFamily="@font/roboto_regular"
             android:maxWidth="250dp"/>
 
 
         <LinearLayout
+            android:id="@+id/barbershopLocationLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -273,17 +278,19 @@
 
             <ImageView
                 android:id="@+id/barbershopLocationImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_map_24"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/map"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View direction"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_regular"/>
+                android:text="Location"
+                android:textSize="10dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:layout_gravity="center_horizontal"/>
 
         </LinearLayout>
 
@@ -299,23 +306,27 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_marginHorizontal="6dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/radius_shape">
 
             <ImageView
                 android:layout_width="54dp"
                 android:layout_height="54dp"
-                android:src="@drawable/ic_image_black_24dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/image_files"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:text="Gallery"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_regular"
+                android:textSize="14dp"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_vertical" />
 
 
         </LinearLayout>
@@ -323,24 +334,27 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_weight="1">
+            android:layout_marginHorizontal="6dp"
+            android:orientation="horizontal"
+            android:layout_weight="1"
+            android:background="@drawable/radius_shape">
 
             <ImageView
                 android:layout_width="54dp"
                 android:layout_height="54dp"
-                android:src="@drawable/ic_chat_black_24dp"
-                app:tint="@color/black"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/feedback"
                 android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Reviews"
-                android:textSize="12dp"
-                android:fontFamily="@font/roboto_regular"
+                android:layout_marginHorizontal="10dp"
+                android:text="Feedback"
+                android:textSize="14dp"
+                android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:layout_gravity="center_horizontal"/>
+                android:layout_gravity="center_vertical" />
 
         </LinearLayout>
 
@@ -353,7 +367,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="64dp"
-        android:layout_marginVertical="64dp"
+        android:layout_marginVertical="50dp"
         android:text="Book"/>
 
 

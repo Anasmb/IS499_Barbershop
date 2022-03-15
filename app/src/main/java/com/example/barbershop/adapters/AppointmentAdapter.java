@@ -51,6 +51,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.price.setText(appointmentItem.getPrice());
         holder.serviceAt.setText(appointmentItem.getServiceAt());
         holder.status.setText(appointmentItem.getStatus());
+
     }
 
     @Override
@@ -60,7 +61,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     class AppointmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView barbershopName, barberName, dateTime, price, serviceAt ,status;
+        TextView barbershopName, barberName, dateTime, price, serviceAt ,status ;
         OnItemListener onItemListener;
 
         public AppointmentViewHolder(@NonNull @NotNull View itemView, OnItemListener onItemListener) {

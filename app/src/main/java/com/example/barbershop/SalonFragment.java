@@ -80,8 +80,9 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
                         JSONObject serviceObject = services.getJSONObject(i);
                         String salonName = serviceObject.getString("ShopName");
                         String address = serviceObject.getString("Address");
+                        String phoneNumber = serviceObject.getString("PhoneNumber");
                         int id = serviceObject.getInt("BarbershopID");
-                        SalonItem salonItem = new SalonItem(R.drawable.herry_poer,salonName,address,id); //TODO CHANGE THE IMAGE FUNCTIONALITY
+                        SalonItem salonItem = new SalonItem(R.drawable.herry_poer,salonName,address,phoneNumber,id); //TODO CHANGE THE IMAGE FUNCTIONALITY
                         salonItemList.add(salonItem);
                         Log.d("php", "salon name" + salonName);
                     }
@@ -110,6 +111,8 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
         Intent intent = new Intent(getActivity() , ShopPageActivity.class);
         intent.putExtra("barbershopID",salonItemList.get(position).getId());
         intent.putExtra("shopName",salonItemList.get(position).getSalonName());
+        intent.putExtra("address",salonItemList.get(position).getAddress());
+        intent.putExtra("phoneNumber",salonItemList.get(position).getPhoneNumber());
         startActivity(intent);
     }
 }
