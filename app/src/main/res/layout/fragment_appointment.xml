@@ -6,7 +6,7 @@
     android:background="@color/background_light_blue">
 
     <LinearLayout
-        android:id="@+id/topNav"
+        android:id="@+id/appointment_topNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -24,5 +24,13 @@
             android:textColor="@color/black"/>
 
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/appointments_recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appointment_topNav"
+        android:padding="16dp"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>

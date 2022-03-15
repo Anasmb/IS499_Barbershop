@@ -1,8 +1,7 @@
-package com.example.barbershop;
+package com.example.barbershop.items;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.widget.CheckBox;
 
 public class ServiceItem implements Parcelable {
 

@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.barbershop.items.ServiceItem;
 import com.google.android.material.button.MaterialButton;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -162,7 +163,7 @@ public class SummaryActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                String[] field = new String[10];
+                String[] field = new String[11];
                 field[0] = "totalPrice";
                 field[1] = "time";
                 field[2] = "date";
@@ -170,11 +171,12 @@ public class SummaryActivity extends AppCompatActivity {
                 field[4] = "status";
                 field[5] = "customerAddress";
                 field[6] = "serviceLocation";
-                field[7] = "barberName";
-                field[8] = "barbershopID";
-                field[9] = "customerID";
+                field[7] = "barbershopName";
+                field[8] = "barberName";
+                field[9] = "barbershopID";
+                field[10] = "customerID";
                 //Creating array for data
-                String[] data = new String[10];
+                String[] data = new String[11];
                 data[0] = String.valueOf(totalPrice);
                 data[1] = time;
                 data[2] = date;
@@ -182,9 +184,10 @@ public class SummaryActivity extends AppCompatActivity {
                 data[4] = "Pending";
                 data[5] = address == null ? "" : address;
                 data[6] =  address == null ? "At Barbershop" : "At House";
-                data[7] = barberName;
-                data[8] = String.valueOf(shopID);
-                data[9] = preferences.getString("customerID","");
+                data[7] = shopName;
+                data[8] = barberName;
+                data[9] = String.valueOf(shopID);
+                data[10] = preferences.getString("customerID","");
                 PutData putData = new PutData("http://192.168.100.6/barbershop-php/addAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {

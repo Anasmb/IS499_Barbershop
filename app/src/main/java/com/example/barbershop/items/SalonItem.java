@@ -1,4 +1,4 @@
-package com.example.barbershop;
+package com.example.barbershop.items;
 
 public class SalonItem {
 

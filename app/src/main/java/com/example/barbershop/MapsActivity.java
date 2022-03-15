@@ -2,9 +2,7 @@ package com.example.barbershop;
 
 import androidx.fragment.app.FragmentActivity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Point;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -14,6 +12,7 @@ import android.view.Window;
 import android.widget.TextView;
 
 import com.example.barbershop.databinding.ActivityMapsBinding;
+import com.example.barbershop.items.ServiceItem;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -21,7 +20,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.example.barbershop.databinding.ActivityMapsBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.IOException;
