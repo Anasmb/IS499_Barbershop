@@ -75,16 +75,16 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
             @Override
             public void onResponse(String response) {
                 try {
-                    JSONArray services = new JSONArray(response);
-                    for (int i = 0 ; i < services.length() ; i++){
-                        JSONObject serviceObject = services.getJSONObject(i);
-                        String salonName = serviceObject.getString("ShopName");
-                        String address = serviceObject.getString("Address");
-                        String phoneNumber = serviceObject.getString("PhoneNumber");
-                        int id = serviceObject.getInt("BarbershopID");
-                        SalonItem salonItem = new SalonItem(R.drawable.herry_poer,salonName,address,phoneNumber,id); //TODO CHANGE THE IMAGE FUNCTIONALITY
+                    JSONArray salons = new JSONArray(response);
+                    for (int i = 0 ; i < salons.length() ; i++){
+                        JSONObject salonObject = salons.getJSONObject(i);
+                        String image = salonObject.getString("Image");
+                        String salonName = salonObject.getString("ShopName");
+                        String address = salonObject.getString("Address");
+                        String phoneNumber = salonObject.getString("PhoneNumber");
+                        int id = salonObject.getInt("BarbershopID");
+                        SalonItem salonItem = new SalonItem(image,salonName,address,phoneNumber,id);
                         salonItemList.add(salonItem);
-                        Log.d("php", "salon name" + salonName);
                     }
 
                     adapter = new SalonAdapter(getActivity(), salonItemList, SalonFragment.this::onNoteClick);

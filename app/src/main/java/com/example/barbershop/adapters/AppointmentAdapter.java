@@ -1,18 +1,27 @@
 package com.example.barbershop.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.barbershop.R;
+import com.example.barbershop.RateActivity;
 import com.example.barbershop.items.AppointmentItem;
 import com.example.barbershop.items.SalonItem;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -34,7 +43,6 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
     @NotNull
     @Override
     public AppointmentViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(mContext);
         View view = inflater.inflate(R.layout.appointment_item, null);
         AppointmentAdapter.AppointmentViewHolder holder = new AppointmentAdapter.AppointmentViewHolder(view,mOnItemListener);
@@ -51,6 +59,16 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         holder.price.setText(appointmentItem.getPrice());
         holder.serviceAt.setText(appointmentItem.getServiceAt());
         holder.status.setText(appointmentItem.getStatus());
+
+        if (holder.status.getText().toString().equals("Finished")){
+            holder.status.setTextColor(Color.parseColor("#AAAAAA"));
+        }
+        else if (holder.status.getText().toString().equals("Confirmed")){
+            holder.status.setTextColor(Color.parseColor("#00A521"));
+        }
+        else if (holder.status.getText().toString().equals("Declined")){
+            holder.status.setTextColor(Color.parseColor("#A50000"));
+        }
 
     }
 

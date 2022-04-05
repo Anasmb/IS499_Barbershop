@@ -29,7 +29,7 @@ import java.util.List;
 
 public class SelectServiceActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getService.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/service/getService.php";
     private ImageView backBtn;
     private MaterialButton continueBtn;
     private RecyclerView recyclerView;

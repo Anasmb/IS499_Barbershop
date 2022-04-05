@@ -1,6 +1,9 @@
 package com.example.barbershop.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,9 +47,16 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
     public void onBindViewHolder(@NonNull @NotNull SalonAdapter.SalonViewHolder holder, int position) {
         SalonItem salonItem = salonItemList.get(position);
 
-        holder.salonImage.setImageDrawable(mContext.getResources().getDrawable(salonItem.getSalonImage()));
+        String stringAddress[] = salonItem.getAddress().split("/");
+
         holder.salonName.setText(salonItem.getSalonName());
-        holder.address.setText(salonItem.getAddress());
+        holder.address.setText(stringAddress[0]);
+
+
+        byte[] imageAsBytes = Base64.decode(salonItem.getSalonImage().getBytes(), Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
+        holder.salonImage.setImageBitmap(bitmap);
+
     }
 
     @Override

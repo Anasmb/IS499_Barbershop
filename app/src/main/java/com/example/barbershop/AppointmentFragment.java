@@ -72,7 +72,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
         loadAppointments();
     }
 
-    private void loadAppointments(){
+    private void loadAppointments(){ //TODO MAKE THE RECENT APPOINTMENT AT THE TOP
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
@@ -81,6 +81,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
                     JSONArray appointments = new JSONArray(response);
                     for (int i = 0 ; i < appointments.length() ; i++){
                         JSONObject appointmentObject = appointments.getJSONObject(i);
+                        int barbershopID = appointmentObject.getInt("barbershopID");
                         String barbershopName = appointmentObject.getString("barbershopName");
                         String barberName = appointmentObject.getString("barberName");
                         String serviceAt = appointmentObject.getString("serviceLocation");
@@ -88,7 +89,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
                         String totalPrice = appointmentObject.getString("totalPrice");
                         String status = appointmentObject.getString("status");
                         String barbershopAddress = appointmentObject.getString("barbershopAddress");
-                        AppointmentItem appointmentItem = new AppointmentItem(barbershopName,barberName,dateTime,totalPrice,barbershopAddress,serviceAt,status);
+                        AppointmentItem appointmentItem = new AppointmentItem(barbershopID,barbershopName,barberName,dateTime,totalPrice,barbershopAddress,serviceAt,status);
                         appointmentItemList.add(appointmentItem);
                     }
 

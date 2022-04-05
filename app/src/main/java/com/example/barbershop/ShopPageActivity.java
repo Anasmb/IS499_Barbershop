@@ -33,7 +33,7 @@ public class ShopPageActivity extends AppCompatActivity {
     private String address, phoneNumber;
     private ImageView backBtn;
     private MaterialButton bookBtn;
-    private LinearLayout callLayout, mapLayout;
+    private LinearLayout callLayout, mapLayout, feedbackLayout;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
     SharedPreferences preferences;
 
@@ -52,6 +52,8 @@ public class ShopPageActivity extends AppCompatActivity {
         callLayout.setOnClickListener(callLayoutListener);
         mapLayout = findViewById(R.id.barbershopLocationLayout);
         mapLayout.setOnClickListener(mapLayoutListener);
+        feedbackLayout = findViewById(R.id.shopPageFeedbackLayout);
+        feedbackLayout.setOnClickListener(feedbackLayoutListener);
 
         shopID = getIntent().getExtras().getInt("barbershopID");
         shopName.setText(getIntent().getExtras().getString("shopName"));
@@ -81,7 +83,7 @@ public class ShopPageActivity extends AppCompatActivity {
     private View.OnClickListener bookBtnListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if(!preferences.getString("customerID","").isEmpty()){
+            if(!preferences.getString("customerID","").isEmpty()){ // check if he is logged in or no
                 Intent intent = new Intent(getApplicationContext() , SelectBarberActivity.class);
                 intent.putExtra("barbershopID",shopID);
                 intent.putExtra("shopName",shopName.getText());
@@ -110,6 +112,15 @@ public class ShopPageActivity extends AppCompatActivity {
             String uri = "http://maps.google.com/maps?q=loc:" + coordinates[1] + "," + coordinates[2];
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener feedbackLayoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(),FeedbackActivity.class);
+            intent.putExtra("barbershopID",shopID);
             startActivity(intent);
         }
     };

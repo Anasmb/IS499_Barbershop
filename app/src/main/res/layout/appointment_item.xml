@@ -151,7 +151,6 @@
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="18dp" />
 
-
         </RelativeLayout>
 
 

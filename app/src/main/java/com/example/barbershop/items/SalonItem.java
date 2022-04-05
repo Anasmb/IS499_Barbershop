@@ -2,13 +2,13 @@ package com.example.barbershop.items;
 
 public class SalonItem {
 
-    private int salonImage;
+    private String salonImage;
     private String salonName;
     private String address;
     private String phoneNumber;
     private int id;
 
-    public SalonItem(int salonImage, String salonName, String address ,String phoneNumber ,int id) {
+    public SalonItem(String salonImage, String salonName, String address ,String phoneNumber ,int id) {
         this.salonImage = salonImage;
         this.salonName = salonName;
         this.address = address;
@@ -16,7 +16,7 @@ public class SalonItem {
         this.id = id;
     }
 
-    public int getSalonImage() {
+    public String getSalonImage() {
         return salonImage;
     }
 
