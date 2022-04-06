@@ -64,7 +64,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener signupListener = new View.OnClickListener() {
+    private View.OnClickListener signupListener = new View.OnClickListener() { //TODO UNIQUE INFORMATION FIX
         @Override
         public void onClick(View view) {
 
@@ -99,6 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             }
                             else {
                                 Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+                                Log.d("php", result);
                                 signupButton.setClickable(true);
                             }
                         }

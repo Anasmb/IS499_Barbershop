@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="11dp"
+    android:backgroundTint="#F1F1F1">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:background="@drawable/radius_shape"
+                android:backgroundTint="#5E92F6">
+
+                <TextView
+                    android:id="@+id/offerHeaderText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="15%"
+                    android:textSize="24dp"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/roboto_bold"
+                    android:layout_centerInParent="true"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/offerDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="15% off on total grater than 100 SR"
+                android:textSize="14dp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_regular"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"/>
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</androidx.cardview.widget.CardView>

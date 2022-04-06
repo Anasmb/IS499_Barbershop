@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -18,23 +19,39 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.example.barbershop.adapters.OfferAdapter;
+import com.example.barbershop.items.OfferItem;
 import com.example.barbershop.items.ServiceItem;
 import com.google.android.material.button.MaterialButton;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
 
 public class SummaryActivity extends AppCompatActivity {
 
-    SharedPreferences preferences;
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getOffers.php";
+    private SharedPreferences preferences;
     private LinearLayout creditCardLayout, payAtStoreLayout, servicesLayout;
     private MaterialButton bookButton;
     private ImageView backBtn;
     private int shopID;
     private String barberName, date, time, address, shopName , services;
     private ArrayList<ServiceItem> selectedServices;
-    private TextView barbershopNameText, barberNameText, dateText, timeText, grandTotalPrice;
+    private TextView barbershopNameText, barberNameText, dateText, timeText, grandTotalPrice , discountAmount;
     private double totalPrice = 0.0;
+    private double tempDiscount, targetPriceOld = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +84,7 @@ public class SummaryActivity extends AppCompatActivity {
         dateText = findViewById(R.id.summaryDate);
         timeText = findViewById(R.id.summaryTime);
         grandTotalPrice = findViewById(R.id.grandTotalPriceText);
+        discountAmount = findViewById(R.id.discountAmountText);
 
         loadSummary();
     }
@@ -151,11 +169,12 @@ public class SummaryActivity extends AppCompatActivity {
             Log.d("debug", "services = " + services);
             totalPrice += Double.parseDouble(selectedServices.get(i).getServicePrice());
         }
-        grandTotalPrice.setText(String.valueOf(totalPrice));
+
+        applyDiscount();
+
     }
 
     private void saveAppointmentToDB() {
-
 
         bookButton.setClickable(false);
         Handler handler = new Handler(Looper.getMainLooper());
@@ -207,6 +226,38 @@ public class SummaryActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void applyDiscount(){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    JSONArray offers = new JSONArray(response);
+                    for (int i = 0 ; i < offers.length() ; i++){
+                        JSONObject offerObject = offers.getJSONObject(i);
+                        double discount = offerObject.getDouble("discount");
+                        double targetPriceNew= offerObject.getDouble("target");
+                        if (totalPrice >= targetPriceNew && targetPriceNew > targetPriceOld){
+                            tempDiscount = discount;
+                            targetPriceOld = targetPriceNew;
+                        }
+                    }
+                    discountAmount.setText( " - " + String.format("%.2f" , totalPrice * tempDiscount));
+                    totalPrice = totalPrice - (totalPrice * tempDiscount);
+                    grandTotalPrice.setText(String.valueOf(totalPrice));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) { // this method will execute if there is error
+                Log.d("php", "onErrorResponse: " + error);
+            }
+        });
+
+        Volley.newRequestQueue(this).add(stringRequest);
     }
 
 }

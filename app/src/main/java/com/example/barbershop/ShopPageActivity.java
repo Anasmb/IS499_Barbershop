@@ -38,7 +38,7 @@ public class ShopPageActivity extends AppCompatActivity {
     SharedPreferences preferences;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) { //TODO FINISH CALL AND ADDRESS FUNCTIONALITY
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_page);
         preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
