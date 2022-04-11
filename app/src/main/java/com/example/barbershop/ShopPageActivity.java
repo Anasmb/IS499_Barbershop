@@ -33,7 +33,7 @@ public class ShopPageActivity extends AppCompatActivity {
     private String address, phoneNumber;
     private ImageView backBtn;
     private MaterialButton bookBtn;
-    private LinearLayout callLayout, mapLayout, feedbackLayout;
+    private LinearLayout callLayout, mapLayout, galleryLayout,feedbackLayout;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
     SharedPreferences preferences;
 
@@ -52,6 +52,8 @@ public class ShopPageActivity extends AppCompatActivity {
         callLayout.setOnClickListener(callLayoutListener);
         mapLayout = findViewById(R.id.barbershopLocationLayout);
         mapLayout.setOnClickListener(mapLayoutListener);
+        galleryLayout = findViewById(R.id.shopPageGalleryLayout);
+        galleryLayout.setOnClickListener(galleryLayoutListener);
         feedbackLayout = findViewById(R.id.shopPageFeedbackLayout);
         feedbackLayout.setOnClickListener(feedbackLayoutListener);
 
@@ -112,6 +114,15 @@ public class ShopPageActivity extends AppCompatActivity {
             String uri = "http://maps.google.com/maps?q=loc:" + coordinates[1] + "," + coordinates[2];
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
             intent.setPackage("com.google.android.apps.maps");
+            startActivity(intent);
+        }
+    };
+
+    private View.OnClickListener galleryLayoutListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(getApplicationContext(),GalleryActivity.class);
+            intent.putExtra("barbershopID",shopID);
             startActivity(intent);
         }
     };
