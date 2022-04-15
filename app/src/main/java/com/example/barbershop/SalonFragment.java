@@ -39,7 +39,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
     private RecyclerView recyclerView;
     private SalonAdapter adapter;
     private List<SalonItem> salonItemList;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
     private TextView welcomeText;
 
     @Nullable

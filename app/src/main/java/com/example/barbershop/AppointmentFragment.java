@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -38,11 +39,12 @@ import java.util.Locale;
 
 public class AppointmentFragment extends Fragment implements AppointmentAdapter.OnItemListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getAppointment.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/appointment/getAppointment.php";
     private RecyclerView recyclerView;
     private AppointmentAdapter adapter;
     private List<AppointmentItem> appointmentItemList;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
+    private SwipeRefreshLayout swipeRefreshLayout;
 
 
     @Nullable
@@ -64,15 +66,21 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
         }
         SQL_URL += "?customerID=" + preferences.getString("customerID","");
 
+        swipeRefreshLayout = view.findViewById(R.id.appointmentRefresh);
+        swipeRefreshLayout.setOnRefreshListener(refreshListener);
+
         appointmentItemList = new ArrayList<>();
         recyclerView = view.findViewById(R.id.appointments_recyclerView);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setReverseLayout(true);
+        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(linearLayoutManager);
 
         loadAppointments();
     }
 
-    private void loadAppointments(){ //TODO MAKE THE RECENT APPOINTMENT AT THE TOP
+    private void loadAppointments(){
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
@@ -119,4 +127,15 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
         intent.setPackage("com.google.android.apps.maps");
         startActivity(intent);
     }
+
+    private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {
+        @Override
+        public void onRefresh() {
+            appointmentItemList.clear();
+            adapter = new AppointmentAdapter(getActivity(), appointmentItemList, AppointmentFragment.this::onItemClick);
+            recyclerView.setAdapter(adapter);
+            loadAppointments();
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    };
 }

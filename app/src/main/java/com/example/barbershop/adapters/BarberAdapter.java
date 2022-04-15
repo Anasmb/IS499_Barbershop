@@ -79,5 +79,4 @@ public class BarberAdapter extends RecyclerView.Adapter<BarberAdapter.BarberView
         void onNoteClick(View v, int position);
     }
 
-
 }

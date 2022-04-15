@@ -49,8 +49,7 @@ public class SummaryActivity extends AppCompatActivity {
     private String barberName, date, time, address, shopName , services;
     private ArrayList<ServiceItem> selectedServices;
     private TextView barbershopNameText, barberNameText, dateText, timeText, grandTotalPrice , discountAmount;
-    private double totalPrice = 0.0;
-    private double tempDiscount, targetPriceOld = 0;
+    private double totalPrice , tempDiscount , targetPriceOld = 0.0;
 
 
     @Override
@@ -122,11 +121,14 @@ public class SummaryActivity extends AppCompatActivity {
             if (payAtStoreLayout.getTag().equals("not selected") && creditCardLayout.getTag().equals("not selected")) {
                 Toast.makeText(getApplicationContext(), "Select payment method", Toast.LENGTH_SHORT).show();
             }
-            else {
+            else if(payAtStoreLayout.getTag().equals("selected")) {
                 saveAppointmentToDB();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 finish();
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Credit card are not available right now", Toast.LENGTH_SHORT).show();
             }
         }
     };
@@ -182,32 +184,34 @@ public class SummaryActivity extends AppCompatActivity {
             @Override
             public void run() {
 
-                String[] field = new String[11];
+                String[] field = new String[12];
                 field[0] = "totalPrice";
-                field[1] = "time";
-                field[2] = "date";
-                field[3] = "services";
-                field[4] = "status";
-                field[5] = "customerAddress";
-                field[6] = "serviceLocation";
-                field[7] = "barbershopName";
-                field[8] = "barberName";
-                field[9] = "barbershopID";
-                field[10] = "customerID";
+                field[1] = "discount";
+                field[2] = "time";
+                field[3] = "date";
+                field[4] = "services";
+                field[5] = "status";
+                field[6] = "customerAddress";
+                field[7] = "serviceLocation";
+                field[8] = "barbershopName";
+                field[9] = "barberName";
+                field[10] = "barbershopID";
+                field[11] = "customerID";
                 //Creating array for data
-                String[] data = new String[11];
+                String[] data = new String[12];
                 data[0] = String.valueOf(totalPrice);
-                data[1] = time;
-                data[2] = date;
-                data[3] = services;
-                data[4] = "Pending";
-                data[5] = address == null ? "" : address;
-                data[6] =  address == null ? "At Barbershop" : "At House";
-                data[7] = shopName;
-                data[8] = barberName;
-                data[9] = String.valueOf(shopID);
-                data[10] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/addAppointment.php", "POST", field, data);
+                data[1] = String.valueOf(discountAmount.getText().toString().substring(3,8));
+                data[2] = time;
+                data[3] = date;
+                data[4] = services;
+                data[5] = "Pending";
+                data[6] = address == null ? "" : address;
+                data[7] =  address == null ? "At Barbershop" : "At House";
+                data[8] = shopName;
+                data[9] = barberName;
+                data[10] = String.valueOf(shopID);
+                data[11] = preferences.getString("customerID","");
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/addAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

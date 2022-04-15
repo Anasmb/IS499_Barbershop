@@ -28,7 +28,7 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getImages.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/images/getImages.php";
     private GridView gridView;
     private GalleryAdapter adapter;
     private List<GalleryItem> galleryItemList;

@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="11dp"
+    app:cardUseCompatPadding="true"
     android:backgroundTint="#F1F1F1">
 
     <RelativeLayout

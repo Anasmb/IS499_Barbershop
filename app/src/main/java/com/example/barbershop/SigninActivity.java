@@ -29,12 +29,12 @@ import org.json.JSONObject;
 
 public class SigninActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getCustomerInfo.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/customer/getCustomerInfo.php";
     private TextInputEditText phonenumber, password;
     private MaterialButton signinButton;
     private ImageView backBtn;
     private TextView signupTxt;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,23 +59,21 @@ public class SigninActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             if(phonenumber.getText().length() > 0 && password.getText().length() > 0) {
-                //Start ProgressBar first (Set visibility VISIBLE)
                 signinButton.setClickable(false);
                 Handler handler = new Handler(Looper.getMainLooper());
                 handler.post(new Runnable() {
                     @Override
                     public void run() {
-                        //Starting Write and Read data with URL
-                        //Creating array for parameters
+
                         String[] field = new String[2];
                         field[0] = "phonenumber";
                         field[1] = "password";
-                        //Creating array for data
+
                         String[] data = new String[2];
                         data[0] = String.valueOf(phonenumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/login.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/loginCustomer.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
@@ -92,7 +90,6 @@ public class SigninActivity extends AppCompatActivity {
                                 }
                             }
                         }
-                        //End Write and Read data with URL
                     }
                 });
             }

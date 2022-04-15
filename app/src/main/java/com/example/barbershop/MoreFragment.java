@@ -19,7 +19,7 @@ public class MoreFragment extends Fragment {
 
     private LinearLayout myAccountLayout,changeLanguageLayout,customerSupportLayout,signInLayout;
     private TextView customerName,signInText;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
 
     @Nullable
@@ -32,13 +32,10 @@ public class MoreFragment extends Fragment {
 
         myAccountLayout = view.findViewById(R.id.myAccountLayout);
         myAccountLayout.setOnClickListener(myAccountLayoutListener);
-
         changeLanguageLayout = view.findViewById(R.id.changeLanguageLayout);
         changeLanguageLayout.setOnClickListener(changeLanguageLayoutListener);
-
         customerSupportLayout = view.findViewById(R.id.customerSupportLayout);
         customerSupportLayout.setOnClickListener(customerSupportLayoutListener);
-
         signInLayout = view.findViewById(R.id.signInLayout);
         signInLayout.setOnClickListener(signInLayoutListener);
 
@@ -100,6 +97,5 @@ public class MoreFragment extends Fragment {
 
         }
     };
-    
 
 }

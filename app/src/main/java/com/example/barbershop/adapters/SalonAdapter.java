@@ -52,7 +52,6 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
         holder.salonName.setText(salonItem.getSalonName());
         holder.address.setText(stringAddress[0]);
 
-
         byte[] imageAsBytes = Base64.decode(salonItem.getSalonImage().getBytes(), Base64.DEFAULT);
         Bitmap bitmap = BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
         holder.salonImage.setImageBitmap(bitmap);

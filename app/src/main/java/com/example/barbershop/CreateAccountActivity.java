@@ -24,11 +24,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private TextInputEditText name, email, password, phoneNumber;
     private MaterialButton signupButton;
     private TextView phoneNumberWarning, emailWarning, passwordWarning, nameWarning;
-
-    private boolean isNameValid = false;
-    private boolean isPhoneNumberValid = false;
-    private boolean isEmailValid = false;
-    private boolean isPasswordValid = false;
+    private boolean isNameValid , isPhoneNumberValid , isEmailValid , isPasswordValid = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,27 +65,26 @@ public class CreateAccountActivity extends AppCompatActivity {
         public void onClick(View view) {
 
             if(isNameValid && isEmailValid && isPhoneNumberValid && isPasswordValid) {
-            //Start ProgressBar first (Set visibility VISIBLE)
+
             signupButton.setClickable(false);
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
                 @Override
                 public void run() {
-                    //Starting Write and Read data with URL
-                    //Creating array for parameters
+
                     String[] field = new String[4];
                     field[0] = "name";
                     field[1] = "email";
                     field[2] = "password";
                     field[3] = "phonenumber";
-                    //Creating array for data
+
                     String[] data = new String[4];
                     data[0] = String.valueOf(name.getText());
                     data[1] = String.valueOf(email.getText());
                     data[2] = String.valueOf(password.getText());
                     data[3] = String.valueOf(phoneNumber.getText());
                     Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3]);
-                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/signup.php", "POST", field, data);
+                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/signup.php", "POST", field, data);
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();
@@ -104,7 +99,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             }
                         }
                     }
-                    //End Write and Read data with URL
+
                 }
             });
         }

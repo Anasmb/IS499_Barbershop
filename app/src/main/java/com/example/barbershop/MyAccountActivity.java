@@ -20,7 +20,7 @@ public class MyAccountActivity extends AppCompatActivity {
 
     private ImageView backBtn;
     private TextInputEditText name , email, phoneNumber ,password;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
     private MaterialButton saveButton;
 
     @Override
@@ -75,14 +75,14 @@ public class MyAccountActivity extends AppCompatActivity {
                         field[2] = "phoneNumber";
                         field[3] = "password";
                         field[4] = "customerID";
-                        //Creating array for data
+
                         String[] data = new String[5];
                         data[0] = String.valueOf(name.getText());
                         data[1] = String.valueOf(email.getText());
                         data[2] = String.valueOf(phoneNumber.getText());
                         data[3] = String.valueOf(password.getText());
                         data[4] = preferences.getString("customerID", "");
-                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/updateCustomerInfo.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/updateCustomerInfo.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();
@@ -98,7 +98,6 @@ public class MyAccountActivity extends AppCompatActivity {
                                 }
                             }
                         }
-                        //End Write and Read data with URL
                     }
                 });
             } else {

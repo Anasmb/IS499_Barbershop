@@ -29,7 +29,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
         this.serviceItemList = serviceItemList;
     }
 
-
     @NonNull
     @NotNull
     @Override
@@ -80,10 +79,6 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ServiceV
             selectedServices = new ArrayList<>();
         }
 
-
-
     }
-
-
 
 }

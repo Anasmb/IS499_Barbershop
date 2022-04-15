@@ -36,8 +36,7 @@ public class SelectServiceActivity extends AppCompatActivity {
     private ServiceAdapter adapter;
     private List<ServiceItem> serviceItemList;
     private int shopID;
-    private String barberName;
-    private String shopName;
+    private String barberName, shopName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

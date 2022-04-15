@@ -22,7 +22,7 @@ public class RateActivity extends AppCompatActivity {
     private ImageView backBtn;
     private MaterialButton clickedRate,submitBtn ,rate1,rate2,rate3,rate4,rate5;
     private EditText feedback;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
     private int barbershopID;
 
     @Override
@@ -64,32 +64,39 @@ public class RateActivity extends AppCompatActivity {
 
         @Override
         public void onClick(View view) {
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
-                    String[] field = new String[4];
-                    field[0] = "stars";
-                    field[1] = "comment";
-                    field[2] = "barbershopID";
-                    field[3] = "customerID";
-                    String[] data = new String[4];
-                    data[0] = clickedRate.getText().toString();
-                    data[1] = feedback.getText().toString();
-                    data[2] = String.valueOf(barbershopID);
-                    data[3] = preferences.getString("customerID","");
-                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/addFeedback.php", "POST", field, data);
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            String result = putData.getResult();
-                            Log.d("php", result);
-                            Toast.makeText(getApplicationContext(),"Thank you for your feedback" , Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
-                    }
 
-                }
-            });
+            if (feedback.getText().toString().length() > 3){ // Check if user added feedback or not
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] field = new String[4];
+                        field[0] = "stars";
+                        field[1] = "comment";
+                        field[2] = "barbershopID";
+                        field[3] = "customerID";
+                        String[] data = new String[4];
+                        data[0] = clickedRate.getText().toString();
+                        data[1] = feedback.getText().toString();
+                        data[2] = String.valueOf(barbershopID);
+                        data[3] = preferences.getString("customerID","");
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/feedback/addFeedback.php", "POST", field, data);
+                        if (putData.startPut()) {
+                            if (putData.onComplete()) {
+                                String result = putData.getResult();
+                                Log.d("php", result);
+                                Toast.makeText(getApplicationContext(),"Thank you for your feedback" , Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+
+                    }
+                });
+            }
+            else {
+                Toast.makeText(getApplicationContext(),"Please add feedback" , Toast.LENGTH_SHORT).show();
+            }
+
         }
     };
 

@@ -169,7 +169,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" -- SR"
-                    android:textColor="#008E2A"
+                    android:textColor="#FF8503"
                     android:fontFamily="@font/roboto_bold"
                     android:textSize="16dp"
                     android:layout_gravity="center_vertical"

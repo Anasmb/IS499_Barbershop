@@ -35,7 +35,7 @@ public class ShopPageActivity extends AppCompatActivity {
     private MaterialButton bookBtn;
     private LinearLayout callLayout, mapLayout, galleryLayout,feedbackLayout;
     private TextView sundayTime, mondayTime, tuesdayTime, wednesdayTime, thursdayTime, fridayTime, saturdayTime;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -29,9 +29,8 @@ import java.util.List;
 
 public class SelectBarberActivity extends AppCompatActivity implements BarberAdapter.OnNoteListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getBarbers.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/barber/getBarbers.php";
     private ImageView backBtn;
-    private MaterialButton continueBtn;
     private RecyclerView recyclerView;
     private BarberAdapter adapter;
     private List<BarberItem> barberItemList;

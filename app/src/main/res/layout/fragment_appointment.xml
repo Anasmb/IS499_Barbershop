@@ -25,6 +25,12 @@
 
     </LinearLayout>
 
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/appointmentRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/appointment_topNav">
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/appointments_recyclerView"
         android:layout_width="match_parent"
@@ -32,5 +38,7 @@
         android:layout_below="@id/appointment_topNav"
         android:padding="16dp"
         android:scrollbars="vertical"/>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

@@ -34,13 +34,13 @@ import java.util.List;
 
 public class FeedbackActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getFeedback.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/feedback/getFeedback.php";
     private ImageView backBtn,addFeedbackBtn;
     private RecyclerView recyclerView;
     private FeedbackAdapter adapter;
     private List<FeedbackItem> feedbackItemList;
     private int shopID;
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
     private boolean isRated,didBook;
 
     @Override
@@ -142,7 +142,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 String[] data = new String[2];
                 data[0] = String.valueOf(shopID);
                 data[1] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/checkFeedback.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/feedback/checkFeedback.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -171,7 +171,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 String[] data = new String[2];
                 data[0] = String.valueOf(shopID);
                 data[1] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/getAppointment.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/getAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
