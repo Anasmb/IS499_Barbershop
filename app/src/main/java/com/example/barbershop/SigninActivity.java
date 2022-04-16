@@ -108,7 +108,7 @@ public class SigninActivity extends AppCompatActivity {
                     JSONArray customer = new JSONArray(response);
                     for (int i = 0 ; i < customer.length() ; i++){
                         JSONObject customerObject = customer.getJSONObject(i);
-                        editor.putString("customerID" , customerObject.getString("customer_id"));
+                        editor.putString("customerID" , customerObject.getString("customerID"));
                         editor.putString("name" , customerObject.getString("name"));
                         editor.putString("email" , customerObject.getString("email"));
                         editor.putString("password" , customerObject.getString("password"));
