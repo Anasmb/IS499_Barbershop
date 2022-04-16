@@ -18,6 +18,7 @@ import com.example.barbershop.items.SalonItem;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHolder> {
@@ -61,6 +62,11 @@ public class SalonAdapter extends RecyclerView.Adapter<SalonAdapter.SalonViewHol
     @Override
     public int getItemCount() {
         return salonItemList.size();
+    }
+
+    public void filterList(ArrayList<SalonItem> filteredList){
+        salonItemList = filteredList;
+        notifyDataSetChanged();
     }
 
 

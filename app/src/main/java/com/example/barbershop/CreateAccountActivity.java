@@ -60,7 +60,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener signupListener = new View.OnClickListener() { //TODO UNIQUE INFORMATION FIX
+    private View.OnClickListener signupListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 

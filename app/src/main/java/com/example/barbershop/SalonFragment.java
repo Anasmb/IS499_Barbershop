@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.barbershop.adapters.SalonAdapter;
 import com.example.barbershop.items.SalonItem;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -41,6 +44,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
     private List<SalonItem> salonItemList;
     private SharedPreferences preferences;
     private TextView welcomeText;
+    private TextInputEditText searchSalonEditText;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -57,6 +61,8 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
 
 
         welcomeText = view.findViewById(R.id.welcomeGuestText);
+        searchSalonEditText = view.findViewById(R.id.searchSalonEditText);
+        searchSalonEditText.addTextChangedListener(searchListener);
 
         if (!preferences.getString("name","").isEmpty()){
             welcomeText.setText("Welcome " + preferences.getString("name",""));
@@ -115,4 +121,27 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
         intent.putExtra("phoneNumber",salonItemList.get(position).getPhoneNumber());
         startActivity(intent);
     }
+
+    private TextWatcher searchListener = new TextWatcher() { // search for barbershop
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+           ArrayList<SalonItem> filteredList = new ArrayList<>();
+           for (SalonItem item : salonItemList){
+               if (item.getSalonName().toLowerCase().contains(editable.toString().toLowerCase())){
+                    filteredList.add(item);
+               }
+           }
+           adapter.filterList(filteredList);
+
+        }
+    };
+
+
 }
