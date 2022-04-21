@@ -111,7 +111,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
-                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("php", "Unable to connect to Database");
             }
         });
 

@@ -84,7 +84,7 @@ public class OfferFragment extends Fragment {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
-                Log.d("php", "onErrorResponse: " + error);
+                Log.d("php", "Unable to connect to Database");
             }
         });
 

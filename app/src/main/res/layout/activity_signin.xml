@@ -54,7 +54,7 @@
                 android:id="@+id/signinPhoneNumberEditText"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textEmailAddress"
+                android:inputType="number"
                 android:drawableRight="@drawable/ic_baseline_phone_iphone_24"
                 android:singleLine="true"
                 android:maxLength="10"/>
@@ -89,24 +89,44 @@
             android:layout_marginVertical="24dp"
             android:text="Sign in"/>
 
-        <TextView
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginTop="16dp"-->
+<!--            android:text="Forgot Password ?"-->
+<!--            android:textColor="@color/skyBlue"-->
+<!--            android:fontFamily="@font/roboto_bold"-->
+<!--            android:textAlignment="center"/>-->
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Forgot Password ?"
-            android:textColor="@color/skyBlue"
-            android:fontFamily="@font/roboto_bold"
-            android:textAlignment="center"/>
-
-        <TextView
-            android:id="@+id/signupTxt"
-            android:layout_width="match_parent"
-            android:layout_height="32dp"
+            android:orientation="horizontal"
             android:layout_marginVertical="20dp"
-            android:text="Sign up"
-            android:textColor="@color/skyBlue"
-            android:fontFamily="@font/roboto_bold"
-            android:textAlignment="center"/>
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account?"
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"/>
+
+            <TextView
+                android:id="@+id/signupTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sign up"
+                android:layout_marginHorizontal="8dp"
+                android:textColor="@color/skyBlue"
+                android:fontFamily="@font/roboto_bold"
+                android:textAlignment="center"/>
+
+
+        </LinearLayout>
+
+
 
 
 

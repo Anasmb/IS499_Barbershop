@@ -84,7 +84,7 @@ public class SigninActivity extends AppCompatActivity {
                                     saveCustomerInfo();
                                 }
                                 else {
-                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(),"Unable to connect to Database", Toast.LENGTH_SHORT).show();
                                     Log.d("php", result);
                                     signinButton.setClickable(true);
                                 }

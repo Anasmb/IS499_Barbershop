@@ -103,7 +103,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) { // this method will execute if there is error
-                Toast.makeText(getActivity(),error.getMessage(), Toast.LENGTH_LONG).show();
+                Log.d("debug", "onErrorResponse: " + error.getMessage());
             }
         });
 
@@ -132,14 +132,15 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
 
         @Override
         public void afterTextChanged(Editable editable) {
-           ArrayList<SalonItem> filteredList = new ArrayList<>();
-           for (SalonItem item : salonItemList){
-               if (item.getSalonName().toLowerCase().contains(editable.toString().toLowerCase())){
+            if (!salonItemList.isEmpty()){
+                ArrayList<SalonItem> filteredList = new ArrayList<>();
+            for (SalonItem item : salonItemList) {
+                if (item.getSalonName().toLowerCase().contains(editable.toString().toLowerCase())) {
                     filteredList.add(item);
-               }
-           }
-           adapter.filterList(filteredList);
-
+                }
+            }
+            adapter.filterList(filteredList);
+            }
         }
     };
 
