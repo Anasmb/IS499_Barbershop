@@ -46,7 +46,6 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
     private SharedPreferences preferences;
     private SwipeRefreshLayout swipeRefreshLayout;
 
-
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -64,6 +63,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
             startActivity(intent);
             getActivity().finish();
         }
+
         SQL_URL += "?customerID=" + preferences.getString("customerID","");
 
         swipeRefreshLayout = view.findViewById(R.id.appointmentRefresh);
@@ -85,10 +85,12 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("php", "loadAppointments Response: " + response);
                 try {
                     JSONArray appointments = new JSONArray(response);
                     for (int i = 0 ; i < appointments.length() ; i++){
                         JSONObject appointmentObject = appointments.getJSONObject(i);
+                        int appointmentID = appointmentObject.getInt("appointmentID");
                         int barbershopID = appointmentObject.getInt("barbershopID");
                         String barbershopName = appointmentObject.getString("barbershopName");
                         String barberName = appointmentObject.getString("barberName");
@@ -97,7 +99,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
                         String totalPrice = appointmentObject.getString("totalPrice");
                         String status = appointmentObject.getString("status");
                         String barbershopAddress = appointmentObject.getString("barbershopAddress");
-                        AppointmentItem appointmentItem = new AppointmentItem(barbershopID,barbershopName,barberName,dateTime,totalPrice,barbershopAddress,serviceAt,status);
+                        AppointmentItem appointmentItem = new AppointmentItem(appointmentID,barbershopID,barbershopName,barberName,dateTime,totalPrice,barbershopAddress,serviceAt,status);
                         appointmentItemList.add(appointmentItem);
                     }
 
@@ -114,9 +116,7 @@ public class AppointmentFragment extends Fragment implements AppointmentAdapter.
                 Log.d("php", "Unable to connect to Database");
             }
         });
-
         Volley.newRequestQueue(getActivity()).add(stringRequest);
-
     }
 
     @Override

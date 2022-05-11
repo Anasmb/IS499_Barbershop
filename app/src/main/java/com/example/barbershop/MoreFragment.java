@@ -47,7 +47,6 @@ public class MoreFragment extends Fragment {
             signInText.setText("Logout");
         }
 
-
         return view;
     }
 
@@ -81,7 +80,7 @@ public class MoreFragment extends Fragment {
         }
     };
 
-    private View.OnClickListener signInLayoutListener = new View.OnClickListener() {
+    private View.OnClickListener signInLayoutListener = new View.OnClickListener() { //TODO FIX BACK ISSUE, after take an appointment and then logout  then press back it takes you to the wrong page
         @Override
         public void onClick(View view) {
             if (preferences.getString("customerID", "").isEmpty()){
@@ -92,6 +91,8 @@ public class MoreFragment extends Fragment {
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.clear();
                 editor.apply();
+                Intent intent = new Intent(getActivity().getApplicationContext() , SigninActivity.class);
+                startActivity(intent);
                 getActivity().finish();
             }
 

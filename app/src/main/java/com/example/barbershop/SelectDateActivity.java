@@ -35,22 +35,12 @@ public class SelectDateActivity extends AppCompatActivity implements DatePickerD
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_date);
 
+        viewsInitialization();
+
         selectedServices = getIntent().getExtras().getParcelableArrayList("services");
         shopID = getIntent().getExtras().getInt("barbershopID");
         barberName = getIntent().getExtras().getString("barberName");
         shopName = getIntent().getExtras().getString("shopName");
-
-        backBtn = findViewById(R.id.selectDate_backButton);
-        backBtn.setOnClickListener(backBtnListener);
-        dateText = findViewById(R.id.selectDateEditText);
-        dateText.setOnClickListener(dateClickListener);
-        timeText = findViewById(R.id.selectTimeEditText);
-        timeText.setOnClickListener(timeClickListener);
-
-        atBarbershop = findViewById(R.id.atBarbershopLayout);
-        atBarbershop.setOnClickListener(barbershopLayoutListener);
-        atHouse = findViewById(R.id.yourHouseLayout);
-        atHouse.setOnClickListener(houseLayoutListener);
 
     }
 
@@ -143,5 +133,18 @@ public class SelectDateActivity extends AppCompatActivity implements DatePickerD
         dateText.setText(new StringBuilder().append(dayOfMonth).append("/").append(monthOfYear + 1).append("/").append(year).append(" "));
     }
 
+    private void viewsInitialization(){
+        backBtn = findViewById(R.id.selectDate_backButton);
+        backBtn.setOnClickListener(backBtnListener);
+        dateText = findViewById(R.id.selectDateEditText);
+        dateText.setOnClickListener(dateClickListener);
+        timeText = findViewById(R.id.selectTimeEditText);
+        timeText.setOnClickListener(timeClickListener);
+
+        atBarbershop = findViewById(R.id.atBarbershopLayout);
+        atBarbershop.setOnClickListener(barbershopLayoutListener);
+        atHouse = findViewById(R.id.yourHouseLayout);
+        atHouse.setOnClickListener(houseLayoutListener);
+    }
 
 }

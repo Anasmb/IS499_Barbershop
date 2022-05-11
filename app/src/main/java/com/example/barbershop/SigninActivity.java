@@ -40,18 +40,8 @@ public class SigninActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signin);
-
-        phonenumber = findViewById(R.id.signinPhoneNumberEditText);
-        password = findViewById(R.id.signinPasswordEditText);
+        viewsInitialization();
         preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-
-        signinButton = findViewById(R.id.signinButton);
-        signinButton.setOnClickListener(signinListener);
-
-        backBtn = findViewById(R.id.signin_back_button);
-        backBtn.setOnClickListener(backBtnListener);
-        signupTxt = findViewById(R.id.signupTxt);
-        signupTxt.setOnClickListener(signupListener);
     }
 
     private View.OnClickListener signinListener = new View.OnClickListener() {
@@ -147,6 +137,19 @@ public class SigninActivity extends AppCompatActivity {
             startActivity(intent);
         }
     };
+
+    private void viewsInitialization(){
+        phonenumber = findViewById(R.id.signinPhoneNumberEditText);
+        password = findViewById(R.id.signinPasswordEditText);
+
+        signinButton = findViewById(R.id.signinButton);
+        signinButton.setOnClickListener(signinListener);
+
+        backBtn = findViewById(R.id.signin_back_button);
+        backBtn.setOnClickListener(backBtnListener);
+        signupTxt = findViewById(R.id.signupTxt);
+        signupTxt.setOnClickListener(signupListener);
+    }
 
 
 }

@@ -31,25 +31,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        backBtn = findViewById(R.id.createAccount_back_button);
-        backBtn.setOnClickListener(backBtnListener);
-
-        name = findViewById(R.id.createAccountNameEditText);
-        name.addTextChangedListener(nameInputCheck);
-        email = findViewById(R.id.createAccountEmailEditText);
-        email.addTextChangedListener(emailInputCheck);
-        password = findViewById(R.id.createAccountPasswordEditText);
-        password.addTextChangedListener(passwordInputCheck);
-        phoneNumber = findViewById(R.id.createAccountPhoneNumberEditText);
-        phoneNumber.addTextChangedListener(phoneNumberInputCheck);
-
-        signupButton = findViewById(R.id.createAccountSignupBtn);
-        signupButton.setOnClickListener(signupListener);
-
-        phoneNumberWarning = findViewById(R.id.mobileNumberWarning);
-        emailWarning = findViewById(R.id.emailWarning);
-        passwordWarning = findViewById(R.id.passwordWarning);
-        nameWarning = findViewById(R.id.nameWarning);
+        viewsInitialization();
 
     }
 
@@ -62,50 +44,68 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private View.OnClickListener signupListener = new View.OnClickListener() {
         @Override
-        public void onClick(View view) {
+    public void onClick(View view) {
 
-            if(isNameValid && isEmailValid && isPhoneNumberValid && isPasswordValid) {
+        if(isNameValid && isEmailValid && isPhoneNumberValid && isPasswordValid) {
 
-            signupButton.setClickable(false);
-            Handler handler = new Handler(Looper.getMainLooper());
-            handler.post(new Runnable() {
-                @Override
-                public void run() {
+        signupButton.setClickable(false);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
 
-                    String[] field = new String[4];
-                    field[0] = "name";
-                    field[1] = "email";
-                    field[2] = "password";
-                    field[3] = "phonenumber";
+        String[] field = new String[4];
+        field[0] = "name";
+        field[1] = "email";
+        field[2] = "password";
+        field[3] = "phonenumber";
 
-                    String[] data = new String[4];
-                    data[0] = String.valueOf(name.getText());
-                    data[1] = String.valueOf(email.getText());
-                    data[2] = String.valueOf(password.getText());
-                    data[3] = String.valueOf(phoneNumber.getText());
-                    Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3]);
-                    PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/signup.php", "POST", field, data);
-                    if (putData.startPut()) {
-                        if (putData.onComplete()) {
-                            String result = putData.getResult();
-                            if(result.equals("Sign Up Success")){
-                                Toast.makeText(getApplicationContext(),"Register Success",Toast.LENGTH_LONG).show();
-                                finish();
-                            }
-                            else {
-                                Toast.makeText(getApplicationContext(),"Unable to connect to Database", Toast.LENGTH_SHORT).show();
-                                Log.d("php", result);
-                                signupButton.setClickable(true);
-                            }
-                        }
-                    }
-
+        String[] data = new String[4];
+        data[0] = String.valueOf(name.getText());
+        data[1] = String.valueOf(email.getText());
+        data[2] = String.valueOf(password.getText());
+        data[3] = String.valueOf(phoneNumber.getText());
+        Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3]);
+        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/signup.php", "POST", field, data);
+        if (putData.startPut()) {
+            if (putData.onComplete()) {
+                String result = putData.getResult();
+                if(result.equals("Sign Up Success")){
+                    Toast.makeText(getApplicationContext(),"Register Success",Toast.LENGTH_LONG).show();
+                    finish();
                 }
-            });
+                else {
+                    Toast.makeText(getApplicationContext(),"Unable to connect to Database", Toast.LENGTH_SHORT).show();
+                    Log.d("php", result);
+                    signupButton.setClickable(true);
+                }
+            }
         }
 
-          }
+            }
+        });
+    }
+    }
     };
+
+    private void viewsInitialization(){
+        backBtn = findViewById(R.id.createAccount_back_button);
+        backBtn.setOnClickListener(backBtnListener);
+        name = findViewById(R.id.createAccountNameEditText);
+        name.addTextChangedListener(nameInputCheck);
+        email = findViewById(R.id.createAccountEmailEditText);
+        email.addTextChangedListener(emailInputCheck);
+        password = findViewById(R.id.createAccountPasswordEditText);
+        password.addTextChangedListener(passwordInputCheck);
+        phoneNumber = findViewById(R.id.createAccountPhoneNumberEditText);
+        phoneNumber.addTextChangedListener(phoneNumberInputCheck);
+        signupButton = findViewById(R.id.createAccountSignupBtn);
+        signupButton.setOnClickListener(signupListener);
+        phoneNumberWarning = findViewById(R.id.mobileNumberWarning);
+        emailWarning = findViewById(R.id.emailWarning);
+        passwordWarning = findViewById(R.id.passwordWarning);
+        nameWarning = findViewById(R.id.nameWarning);
+    }
 
 
     private TextWatcher nameInputCheck = new TextWatcher() {

@@ -2,6 +2,7 @@ package com.example.barbershop.items;
 
 public class AppointmentItem {
 
+    private int appointmentID;
     private int barbershopID;
     private String barbershop;
     private String barber;
@@ -11,7 +12,8 @@ public class AppointmentItem {
     private String serviceAt;
     private String status;
 
-    public AppointmentItem(int barbershopID , String barbershop, String barber, String dateTime, String price, String address, String serviceAt ,String status) {
+    public AppointmentItem(int appointmentID ,int barbershopID , String barbershop, String barber, String dateTime, String price, String address, String serviceAt ,String status) {
+        this.appointmentID = appointmentID;
         this.barbershopID = barbershopID;
         this.barbershop = barbershop;
         this.barber = barber;
@@ -52,5 +54,9 @@ public class AppointmentItem {
 
     public String getServiceAt() {
         return serviceAt;
+    }
+
+    public int getAppointmentID() {
+        return appointmentID;
     }
 }

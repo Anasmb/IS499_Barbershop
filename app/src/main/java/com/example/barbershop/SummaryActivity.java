@@ -51,7 +51,6 @@ public class SummaryActivity extends AppCompatActivity {
     private TextView barbershopNameText, barberNameText, dateText, timeText, grandTotalPrice , discountAmount;
     private double totalPrice , tempDiscount , targetPriceOld = 0.0;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,25 +65,7 @@ public class SummaryActivity extends AppCompatActivity {
         date = getIntent().getExtras().getString("date");
         time = getIntent().getExtras().getString("time");
 
-        creditCardLayout = findViewById(R.id.creditCardLayout);
-        creditCardLayout.setOnClickListener(creditCardListener);
-        creditCardLayout.setTag("not selected");
-        payAtStoreLayout = findViewById(R.id.payAtStoreLayout);
-        payAtStoreLayout.setOnClickListener(payAtStoreListener);
-        payAtStoreLayout.setTag("not selected");
-        servicesLayout = findViewById(R.id.summaryServicesLayout);
-        bookButton = findViewById(R.id.summaryBookButton);
-        bookButton.setOnClickListener(bookListener);
-        backBtn = findViewById(R.id.summary_backButton);
-        backBtn.setOnClickListener(backBtnListener);
-
-        barbershopNameText = findViewById(R.id.summaryBarbershopName);
-        barberNameText = findViewById(R.id.summaryBarberName);
-        dateText = findViewById(R.id.summaryDate);
-        timeText = findViewById(R.id.summaryTime);
-        grandTotalPrice = findViewById(R.id.grandTotalPriceText);
-        discountAmount = findViewById(R.id.discountAmountText);
-
+        viewsInitialization();
         loadSummary();
     }
 
@@ -200,7 +181,7 @@ public class SummaryActivity extends AppCompatActivity {
                 //Creating array for data
                 String[] data = new String[12];
                 data[0] = String.valueOf(totalPrice);
-                data[1] = String.valueOf(discountAmount.getText().toString().substring(3,8));
+                data[1] = String.valueOf(discountAmount.getText().toString());
                 data[2] = time;
                 data[3] = date;
                 data[4] = services;
@@ -226,7 +207,6 @@ public class SummaryActivity extends AppCompatActivity {
                         }
                     }
                 }
-                //End Write and Read data with URL
             }
         });
 
@@ -247,9 +227,9 @@ public class SummaryActivity extends AppCompatActivity {
                             targetPriceOld = targetPriceNew;
                         }
                     }
-                    discountAmount.setText( " - " + String.format("%.2f" , totalPrice * tempDiscount));
+                    discountAmount.setText(String.format("%.2f" , totalPrice * tempDiscount));
                     totalPrice = totalPrice - (totalPrice * tempDiscount);
-                    grandTotalPrice.setText(String.valueOf(totalPrice));
+                    grandTotalPrice.setText(String.format("%.2f" , totalPrice));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -262,6 +242,27 @@ public class SummaryActivity extends AppCompatActivity {
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    private void viewsInitialization(){
+        creditCardLayout = findViewById(R.id.creditCardLayout);
+        creditCardLayout.setOnClickListener(creditCardListener);
+        creditCardLayout.setTag("not selected");
+        payAtStoreLayout = findViewById(R.id.payAtStoreLayout);
+        payAtStoreLayout.setOnClickListener(payAtStoreListener);
+        payAtStoreLayout.setTag("not selected");
+        servicesLayout = findViewById(R.id.summaryServicesLayout);
+        bookButton = findViewById(R.id.summaryBookButton);
+        bookButton.setOnClickListener(bookListener);
+        backBtn = findViewById(R.id.summary_backButton);
+        backBtn.setOnClickListener(backBtnListener);
+
+        barbershopNameText = findViewById(R.id.summaryBarbershopName);
+        barberNameText = findViewById(R.id.summaryBarberName);
+        dateText = findViewById(R.id.summaryDate);
+        timeText = findViewById(R.id.summaryTime);
+        grandTotalPrice = findViewById(R.id.grandTotalPriceText);
+        discountAmount = findViewById(R.id.discountAmountText);
     }
 
 }

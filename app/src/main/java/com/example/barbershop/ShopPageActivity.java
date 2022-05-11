@@ -43,19 +43,7 @@ public class ShopPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_page);
         preferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
 
-        backBtn = findViewById(R.id.shopPage_backButton);
-        backBtn.setOnClickListener(backBtnListener);
-        bookBtn = findViewById(R.id.bookButton);
-        bookBtn.setOnClickListener(bookBtnListener);
-        shopName = findViewById(R.id.shopPage_salonNameText);
-        callLayout = findViewById(R.id.callBarbershopLayout);
-        callLayout.setOnClickListener(callLayoutListener);
-        mapLayout = findViewById(R.id.barbershopLocationLayout);
-        mapLayout.setOnClickListener(mapLayoutListener);
-        galleryLayout = findViewById(R.id.shopPageGalleryLayout);
-        galleryLayout.setOnClickListener(galleryLayoutListener);
-        feedbackLayout = findViewById(R.id.shopPageFeedbackLayout);
-        feedbackLayout.setOnClickListener(feedbackLayoutListener);
+        viewsInitialization();
 
         shopID = getIntent().getExtras().getInt("barbershopID");
         shopName.setText(getIntent().getExtras().getString("shopName"));
@@ -63,16 +51,7 @@ public class ShopPageActivity extends AppCompatActivity {
         phoneNumber = getIntent().getExtras().getString("phoneNumber");
         SQL_URL += "?BarbershopID=" + shopID;
 
-        sundayTime = findViewById(R.id.sundayTimeText);
-        mondayTime = findViewById(R.id.mondayTimeText);
-        tuesdayTime = findViewById(R.id.tuesdayTimeText);
-        wednesdayTime = findViewById(R.id.wednesdayTimeText);
-        thursdayTime = findViewById(R.id.thursdayTimeText);
-        fridayTime = findViewById(R.id.fridayTimeText);
-        saturdayTime = findViewById(R.id.saturdayTimeText);
-
         loadHours();
-
     }
 
     private View.OnClickListener backBtnListener = new View.OnClickListener() {
@@ -157,6 +136,30 @@ public class ShopPageActivity extends AppCompatActivity {
         });
 
         Volley.newRequestQueue(this).add(stringRequest);
+    }
+
+    private void viewsInitialization(){
+        backBtn = findViewById(R.id.shopPage_backButton);
+        backBtn.setOnClickListener(backBtnListener);
+        bookBtn = findViewById(R.id.bookButton);
+        bookBtn.setOnClickListener(bookBtnListener);
+        shopName = findViewById(R.id.shopPage_salonNameText);
+        callLayout = findViewById(R.id.callBarbershopLayout);
+        callLayout.setOnClickListener(callLayoutListener);
+        mapLayout = findViewById(R.id.barbershopLocationLayout);
+        mapLayout.setOnClickListener(mapLayoutListener);
+        galleryLayout = findViewById(R.id.shopPageGalleryLayout);
+        galleryLayout.setOnClickListener(galleryLayoutListener);
+        feedbackLayout = findViewById(R.id.shopPageFeedbackLayout);
+        feedbackLayout.setOnClickListener(feedbackLayoutListener);
+
+        sundayTime = findViewById(R.id.sundayTimeText);
+        mondayTime = findViewById(R.id.mondayTimeText);
+        tuesdayTime = findViewById(R.id.tuesdayTimeText);
+        wednesdayTime = findViewById(R.id.wednesdayTimeText);
+        thursdayTime = findViewById(R.id.thursdayTimeText);
+        fridayTime = findViewById(R.id.fridayTimeText);
+        saturdayTime = findViewById(R.id.saturdayTimeText);
     }
 
 }

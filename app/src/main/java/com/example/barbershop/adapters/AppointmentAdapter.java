@@ -62,13 +62,26 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
         if (holder.status.getText().toString().equals("Finished")){
             holder.status.setTextColor(Color.parseColor("#AAAAAA"));
+            holder.cancelText.setVisibility(View.GONE);
         }
         else if (holder.status.getText().toString().equals("Confirmed")){
             holder.status.setTextColor(Color.parseColor("#00A521"));
+            holder.cancelText.setVisibility(View.GONE);
         }
         else if (holder.status.getText().toString().equals("Declined")){
             holder.status.setTextColor(Color.parseColor("#A50000"));
+            holder.cancelText.setVisibility(View.GONE);
         }
+
+        holder.cancelText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                holder.cancelText.setVisibility(View.GONE);
+                cancelAppointment(appointmentItem.getAppointmentID());
+                Toast.makeText(mContext.getApplicationContext(), "Appointment Canceled" , Toast.LENGTH_LONG).show();
+                AppointmentAdapter.this.notifyItemRemoved(position);
+            }
+        });
 
     }
 
@@ -79,7 +92,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     class AppointmentViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView barbershopName, barberName, dateTime, price, serviceAt ,status ;
+        TextView barbershopName, barberName, dateTime, price, serviceAt ,status, cancelText ;
         OnItemListener onItemListener;
 
         public AppointmentViewHolder(@NonNull @NotNull View itemView, OnItemListener onItemListener) {
@@ -91,6 +104,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
             price = itemView.findViewById(R.id.appointmentPriceTxt);
             status = itemView.findViewById(R.id.appointmentStatusText);
             serviceAt = itemView.findViewById(R.id.appointmentServiceLocation);
+            cancelText = itemView.findViewById(R.id.appointmentCancelText);
 
             this.onItemListener = onItemListener;
             itemView.setOnClickListener(this::onClick);
@@ -104,6 +118,27 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
 
     public interface OnItemListener{
         void onItemClick(View view, int position);
+    }
+
+    private void cancelAppointment(int appointmentID){
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                String[] field = new String[1];
+                field[0] = "appointmentID";
+                String[] data = new String[1];
+                data[0] = String.valueOf(appointmentID);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/deleteAppointment.php", "POST", field, data);
+                if (putData.startPut()) {
+                    if (putData.onComplete()) {
+                        String result = putData.getResult();
+                        Log.d("php", result);
+                    }
+                }
+
+            }
+        });
     }
 
 }
