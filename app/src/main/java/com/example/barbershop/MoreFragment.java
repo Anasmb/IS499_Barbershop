@@ -92,6 +92,8 @@ public class MoreFragment extends Fragment {
                 editor.clear();
                 editor.apply();
                 Intent intent = new Intent(getActivity().getApplicationContext() , SigninActivity.class);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 getActivity().finish();
             }

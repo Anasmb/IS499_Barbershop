@@ -66,7 +66,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         data[2] = String.valueOf(password.getText());
         data[3] = String.valueOf(phoneNumber.getText());
         Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3]);
-        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/signup.php", "POST", field, data);
+        PutData putData = new PutData("http://188.54.243.108/barbershop-php/customer/signup.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();

@@ -129,7 +129,7 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
                 field[0] = "appointmentID";
                 String[] data = new String[1];
                 data[0] = String.valueOf(appointmentID);
-                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/deleteAppointment.php", "POST", field, data);
+                PutData putData = new PutData("http://188.54.243.108/barbershop-php/appointment/deleteAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

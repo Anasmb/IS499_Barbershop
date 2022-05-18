@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,13 +39,14 @@ import java.util.List;
 
 public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListener {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getShops.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/getShops.php";
     private RecyclerView recyclerView;
     private SalonAdapter adapter;
     private List<SalonItem> salonItemList;
     private SharedPreferences preferences;
     private TextView welcomeText;
     private TextInputEditText searchSalonEditText;
+    private ProgressBar progressBar;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -63,6 +65,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
         welcomeText = view.findViewById(R.id.welcomeGuestText);
         searchSalonEditText = view.findViewById(R.id.searchSalonEditText);
         searchSalonEditText.addTextChangedListener(searchListener);
+        progressBar = view.findViewById(R.id.salonProgress);
 
         if (!preferences.getString("name","").isEmpty()){
             welcomeText.setText("Welcome " + preferences.getString("name",""));
@@ -77,6 +80,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
     }
 
     private void loadSalons(){
+        progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -95,6 +99,7 @@ public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListen
 
                     adapter = new SalonAdapter(getActivity(), salonItemList, SalonFragment.this::onNoteClick);
                     recyclerView.setAdapter(adapter);
+                    progressBar.setVisibility(View.GONE);
 
                 } catch (JSONException e) {
                     e.printStackTrace();

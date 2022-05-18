@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -33,11 +34,11 @@ import java.util.List;
 
 public class OfferFragment extends Fragment {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/getOffers.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/getOffers.php";
     private RecyclerView recyclerView;
     private OfferAdapter adapter;
     private List<OfferItem> offerItemList;
-
+    private ProgressBar progressBar;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -54,11 +55,13 @@ public class OfferFragment extends Fragment {
         recyclerView = view.findViewById(R.id.offerRecyclerView);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        progressBar = view.findViewById(R.id.offerProgress);
 
         loadOffers();
     }
 
     private void loadOffers(){
+        progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -76,7 +79,7 @@ public class OfferFragment extends Fragment {
 
                     adapter = new OfferAdapter(getActivity(), offerItemList);
                     recyclerView.setAdapter(adapter);
-
+                    progressBar.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

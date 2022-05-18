@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -28,12 +29,13 @@ import java.util.List;
 
 public class GalleryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://192.168.100.6/barbershop-php/images/getImages.php";
+    private String SQL_URL = "http://188.54.243.108/barbershop-php/images/getImages.php";
     private GridView gridView;
     private GalleryAdapter adapter;
     private List<GalleryItem> galleryItemList;
     private ImageView backBtn;
     private int shopID;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,7 @@ public class GalleryActivity extends AppCompatActivity {
 
         backBtn = findViewById(R.id.gallery_backButton);
         backBtn.setOnClickListener(backBtnListener);
+        progressBar = findViewById(R.id.galleryProgress);
 
         gridView = findViewById(R.id.galleryGridView);
 
@@ -61,6 +64,7 @@ public class GalleryActivity extends AppCompatActivity {
     };
 
     private void loadImages(){
+        progressBar.setVisibility(View.VISIBLE);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, SQL_URL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -76,7 +80,7 @@ public class GalleryActivity extends AppCompatActivity {
                     }
                     adapter = new GalleryAdapter(getApplicationContext(),galleryItemList);
                     gridView.setAdapter(adapter);
-
+                    progressBar.setVisibility(View.GONE);
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

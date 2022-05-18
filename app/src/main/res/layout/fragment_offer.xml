@@ -5,6 +5,13 @@
     android:layout_height="match_parent"
     android:background="@color/background_light_blue">
 
+    <ProgressBar
+        android:id="@+id/offerProgress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"/>
+
     <LinearLayout
         android:id="@+id/topNav"
         android:layout_width="match_parent"
