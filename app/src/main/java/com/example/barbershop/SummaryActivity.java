@@ -40,7 +40,7 @@ import java.util.Timer;
 
 public class SummaryActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/getOffers.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getOffers.php";
     private SharedPreferences preferences;
     private LinearLayout creditCardLayout, payAtStoreLayout, servicesLayout;
     private MaterialButton bookButton;
@@ -192,7 +192,7 @@ public class SummaryActivity extends AppCompatActivity {
                 data[9] = barberName;
                 data[10] = String.valueOf(shopID);
                 data[11] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/appointment/addAppointment.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/addAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

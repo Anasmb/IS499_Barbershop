@@ -35,7 +35,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="8dp"
-                    android:text="HERRY POER"
+                    android:text="BARBERSHOP NAME"
                     android:fontFamily="@font/roboto_bold"
                     android:textSize="16dp"
                     android:textColor="@color/black"/>
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="4dp"
-                    android:text="Prince Saud al faiasl, AL Rawdah, Riyadh. 23424, Saudi Arabia"
+                    android:text="Barbershop Address"
                     android:fontFamily="@font/roboto_regular"
                     android:textSize="10dp"
                     android:textColor="#898989"

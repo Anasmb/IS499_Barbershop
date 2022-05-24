@@ -34,7 +34,7 @@ import java.util.List;
 
 public class FeedbackActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/feedback/getFeedback.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/feedback/getFeedback.php";
     private ImageView backBtn,addFeedbackBtn;
     private RecyclerView recyclerView;
     private FeedbackAdapter adapter;
@@ -60,6 +60,7 @@ public class FeedbackActivity extends AppCompatActivity {
         backBtn.setOnClickListener(backBtnListener);
         addFeedbackBtn = findViewById(R.id.addFeedbackButton);
         addFeedbackBtn.setOnClickListener(addFeedbackListener);
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
 
         loadFeedback();
@@ -142,7 +143,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 String[] data = new String[2];
                 data[0] = String.valueOf(shopID);
                 data[1] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/feedback/checkFeedback.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/feedback/checkFeedback.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();
@@ -171,7 +172,7 @@ public class FeedbackActivity extends AppCompatActivity {
                 String[] data = new String[2];
                 data[0] = String.valueOf(shopID);
                 data[1] = preferences.getString("customerID","");
-                PutData putData = new PutData("http://188.54.243.108/barbershop-php/appointment/getAppointment.php", "POST", field, data);
+                PutData putData = new PutData("http://192.168.100.6/barbershop-php/appointment/getAppointment.php", "POST", field, data);
                 if (putData.startPut()) {
                     if (putData.onComplete()) {
                         String result = putData.getResult();

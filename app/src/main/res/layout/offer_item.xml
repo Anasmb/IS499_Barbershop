@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="11dp"
     app:cardUseCompatPadding="true"
-    android:backgroundTint="#F1F1F1">
+    android:backgroundTint="@color/background_light_blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                     android:id="@+id/offerHeaderText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="15%"
+                    android:text="00%"
                     android:textSize="24dp"
                     android:textColor="@color/white"
                     android:fontFamily="@font/roboto_bold"
@@ -39,8 +39,8 @@
                 android:id="@+id/offerDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="15% off on total grater than 100 SR"
-                android:textSize="14dp"
+                android:text="00% off on total grater than 000 SR"
+                android:textSize="12dp"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_gravity="center"

@@ -82,7 +82,7 @@ public class MyAccountActivity extends AppCompatActivity {
                         data[2] = String.valueOf(phoneNumber.getText());
                         data[3] = String.valueOf(password.getText());
                         data[4] = preferences.getString("customerID", "");
-                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/customer/updateCustomerInfo.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/updateCustomerInfo.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();

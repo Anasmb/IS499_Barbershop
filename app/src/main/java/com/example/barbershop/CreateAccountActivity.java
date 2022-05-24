@@ -10,6 +10,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import com.vishnusivadas.advanced_httpurlconnection.PutData;
 public class CreateAccountActivity extends AppCompatActivity {
 
     private ImageView backBtn;
-    private TextInputEditText name, email, password, phoneNumber;
+    private EditText name, email, password, phoneNumber;
     private MaterialButton signupButton;
     private TextView phoneNumberWarning, emailWarning, passwordWarning, nameWarning;
     private boolean isNameValid , isPhoneNumberValid , isEmailValid , isPasswordValid = false;
@@ -66,7 +67,7 @@ public class CreateAccountActivity extends AppCompatActivity {
         data[2] = String.valueOf(password.getText());
         data[3] = String.valueOf(phoneNumber.getText());
         Log.d("php" , data[0] + " " + data[1] + " " + data[2] + " " + data[3]);
-        PutData putData = new PutData("http://188.54.243.108/barbershop-php/customer/signup.php", "POST", field, data);
+        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/signup.php", "POST", field, data);
         if (putData.startPut()) {
             if (putData.onComplete()) {
                 String result = putData.getResult();

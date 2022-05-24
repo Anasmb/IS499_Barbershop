@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp"
     app:cardUseCompatPadding="true"
-    android:background="#F1F1F1">
+    android:background="@color/background_light_blue">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="The Cut"
+                android:text="Barbershop Name"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="14dp"
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="Mohammed Khaled"
+                android:text="Barber Name"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="14dp"
@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="At Barbershop"
+                android:text="At Barbershop or At House"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="14dp"
@@ -104,7 +104,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                android:text="20/3/2022 , 07:15 PM"
+                android:text="00/0/2000 , 00:00 PM"
                 android:textColor="@color/black"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="14dp"
@@ -124,7 +124,7 @@
                 android:id="@+id/appointmentPriceTxt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="115"
+                android:text="000"
                 android:textColor="#00A521"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="14dp"
@@ -146,7 +146,7 @@
                 android:id="@+id/appointmentStatusText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pending"
+                android:text="Status"
                 android:textColor="#858585"
                 android:fontFamily="@font/roboto_bold"
                 android:textSize="18dp" />

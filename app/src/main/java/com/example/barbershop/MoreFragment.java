@@ -87,13 +87,11 @@ public class MoreFragment extends Fragment {
                 Intent intent = new Intent(getActivity(), SigninActivity.class);
                 startActivity(intent);
             }
-            else { // delete customer info from application
+            else { // delete customer info from local storage application
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.clear();
                 editor.apply();
                 Intent intent = new Intent(getActivity().getApplicationContext() , SigninActivity.class);
-                intent.addCategory(Intent.CATEGORY_HOME);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 getActivity().finish();
             }

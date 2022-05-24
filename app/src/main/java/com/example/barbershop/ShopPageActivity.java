@@ -27,7 +27,7 @@ import org.json.JSONObject;
 
 public class ShopPageActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/hoursAPI.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/hoursAPI.php";
     private TextView shopName;
     private int shopID;
     private String address, phoneNumber;

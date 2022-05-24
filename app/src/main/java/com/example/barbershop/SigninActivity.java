@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,8 +30,8 @@ import org.json.JSONObject;
 
 public class SigninActivity extends AppCompatActivity {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/customer/getCustomerInfo.php";
-    private TextInputEditText phonenumber, password;
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/customer/getCustomerInfo.php";
+    private EditText phonenumber, password;
     private MaterialButton signinButton;
     private ImageView backBtn;
     private TextView signupTxt;
@@ -63,7 +64,7 @@ public class SigninActivity extends AppCompatActivity {
                         data[0] = String.valueOf(phonenumber.getText());
                         data[1] = String.valueOf(password.getText());
                         Log.d("php" , data[0] + " " + data[1]);
-                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/customer/loginCustomer.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/customer/loginCustomer.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();

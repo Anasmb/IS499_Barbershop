@@ -80,7 +80,7 @@ public class RateActivity extends AppCompatActivity {
                         data[1] = feedback.getText().toString();
                         data[2] = String.valueOf(barbershopID);
                         data[3] = preferences.getString("customerID","");
-                        PutData putData = new PutData("http://188.54.243.108/barbershop-php/feedback/addFeedback.php", "POST", field, data);
+                        PutData putData = new PutData("http://192.168.100.6/barbershop-php/feedback/addFeedback.php", "POST", field, data);
                         if (putData.startPut()) {
                             if (putData.onComplete()) {
                                 String result = putData.getResult();

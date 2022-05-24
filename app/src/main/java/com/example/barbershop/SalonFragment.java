@@ -39,7 +39,7 @@ import java.util.List;
 
 public class SalonFragment extends Fragment implements SalonAdapter.OnNoteListener {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/getShops.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getShops.php";
     private RecyclerView recyclerView;
     private SalonAdapter adapter;
     private List<SalonItem> salonItemList;

@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="530dp"
-        android:text="Gentlemen"
+        android:text="Barbershop"
         android:textColor="@color/black"
         android:textSize="52dp"
         android:textStyle="normal"

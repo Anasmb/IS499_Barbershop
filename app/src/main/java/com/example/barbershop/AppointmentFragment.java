@@ -40,7 +40,7 @@ import java.util.Locale;
 
 public class AppointmentFragment extends Fragment implements AppointmentAdapter.OnItemListener {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/appointment/getAppointment.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/appointment/getAppointment.php";
     private RecyclerView recyclerView;
     private AppointmentAdapter adapter;
     private List<AppointmentItem> appointmentItemList;

@@ -34,7 +34,7 @@ import java.util.List;
 
 public class OfferFragment extends Fragment {
 
-    private String SQL_URL = "http://188.54.243.108/barbershop-php/getOffers.php";
+    private String SQL_URL = "http://192.168.100.6/barbershop-php/getOffers.php";
     private RecyclerView recyclerView;
     private OfferAdapter adapter;
     private List<OfferItem> offerItemList;

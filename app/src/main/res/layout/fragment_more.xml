@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_light_blue">
+    android:background="@drawable/background_colored1">
 
     <LinearLayout
         android:id="@+id/topNav"
@@ -11,8 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        android:padding="16dp"
-        android:background="@color/white">
+        android:padding="16dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -42,7 +41,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="@color/white"
         android:paddingVertical="12dp"
         android:paddingHorizontal="16dp"
         android:layout_below="@id/moreCustomerName">
@@ -50,10 +48,12 @@
         <LinearLayout
             android:id="@+id/myAccountLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:background="?attr/selectableItemBackground">
+            android:padding="16dp"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/radius_shape"
+            android:backgroundTint="#7CA9FF">
 
             <TextView
                 android:id="@+id/myAccountTxt"
@@ -65,31 +65,23 @@
                 android:textStyle="bold"
                 android:text="My Account"
                 android:textSize="18sp"
-                android:textColor="#7A7A7A"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_account_circle_24"
-                android:drawablePadding="8dp"/>
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/white"/>
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_20"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/changeLanguageLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:background="?attr/selectableItemBackground">
+            android:padding="16dp"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/radius_shape"
+            android:backgroundTint="#7CA9FF">
 
             <TextView
                 android:id="@+id/changeLanguageTxt"
@@ -101,31 +93,22 @@
                 android:textStyle="bold"
                 android:text="Change Language"
                 android:textSize="18sp"
-                android:textColor="#7A7A7A"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_language_24"
-                android:drawablePadding="8dp"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_20" />
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/white"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/customerSupportLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:background="?attr/selectableItemBackground">
+            android:padding="16dp"
+            android:layout_marginVertical="4dp"
+            android:background="@drawable/radius_shape"
+            android:backgroundTint="#7CA9FF">
 
 
             <TextView
@@ -138,32 +121,22 @@
                 android:textStyle="bold"
                 android:text="Customer Support"
                 android:textSize="18sp"
-                android:textColor="#7A7A7A"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_support_agent_24"
-                android:drawablePadding="8dp"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
-
-            <ImageView
-                android:id="@+id/devicesForwardImg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_20"/>
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/white"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/signInLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="horizontal"
-            android:paddingVertical="16dp"
-            android:background="?attr/selectableItemBackground">
+            android:layout_marginVertical="4dp"
+            android:padding="16dp"
+            android:background="@drawable/radius_shape"
+            android:backgroundTint="#7CA9FF">
 
             <TextView
                 android:id="@+id/signInTxt"
@@ -175,21 +148,10 @@
                 android:textStyle="bold"
                 android:text="Sign In"
                 android:textSize="18sp"
-                android:textColor="#7A7A7A"
+                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_login_24"
-                android:drawablePadding="8dp"/>
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="20" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_gravity="center_vertical"
-                android:src="@drawable/ic_baseline_arrow_forward_ios_20" />
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/white"/>
 
         </LinearLayout>
 
