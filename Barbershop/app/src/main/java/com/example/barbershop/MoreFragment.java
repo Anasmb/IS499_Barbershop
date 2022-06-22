@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -76,7 +77,10 @@ public class MoreFragment extends Fragment {
     private View.OnClickListener customerSupportLayoutListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-
+            String url = "https://api.whatsapp.com/send?phone="+"+966 569333470";
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(url));
+            startActivity(i);
         }
     };
 

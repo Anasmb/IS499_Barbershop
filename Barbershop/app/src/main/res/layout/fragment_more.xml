@@ -144,14 +144,14 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:fontFamily="@font/roboto_regular"
-                android:textStyle="bold"
-                android:text="Sign In"
-                android:textSize="18sp"
-                android:textColor="@color/white"
                 android:drawableLeft="@drawable/ic_baseline_login_24"
                 android:drawablePadding="8dp"
-                android:drawableTint="@color/white"/>
+                android:drawableTint="@color/white"
+                android:fontFamily="@font/roboto_regular"
+                android:text="Sign In / Sign up"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 

@@ -60,6 +60,7 @@ public class SelectServiceActivity extends AppCompatActivity {
         continueBtn.setOnClickListener(continueBtnListener);
 
         loadServices();
+
     }
 
     private View.OnClickListener backBtnListener = new View.OnClickListener() {
